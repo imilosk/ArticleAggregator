@@ -1,0 +1,11 @@
+@TechArticleAggregator_HostAddress = http://localhost:5249
+
+GET {{TechArticleAggregator_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{TechArticleAggregator_HostAddress}}/todos/1
+Accept: application/json
+
+###

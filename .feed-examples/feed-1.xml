@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Enterprise Craftsmanship</title>
+        <link>https://enterprisecraftsmanship.com/</link>
+        <description>Recent content on Enterprise Craftsmanship</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 29 Mar 2023 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://enterprisecraftsmanship.com/index.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title>Storing information in its highest form</title>
+            <link>https://enterprisecraftsmanship.com/posts/storing-information-in-its-highest-form/</link>
+            <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/storing-information-in-its-highest-form/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;There&amp;#8217;s an interesting guideline I&amp;#8217;ve been meaning to write about for a
+                long time. I call it &lt;em&gt;Storing information in its highest form&lt;/em&gt;.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Which collection interface to use?</title>
+            <link>https://enterprisecraftsmanship.com/posts/which-collection-interface-to-use/</link>
+            <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/which-collection-interface-to-use/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Let&amp;#8217;s talk about when to use which collection type and why.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Generic types are for arguments, specific types are for return values</title>
+            <link>https://enterprisecraftsmanship.com/posts/generic-types-arguments-specific-types-return-values/</link>
+            <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/generic-types-arguments-specific-types-return-values/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Today, we&amp;#8217;ll discuss the following guideline: you should use the most generic types
+                possible for arguments and the most specific types possible for return values.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Modeling Relationships in a DDD Way</title>
+            <link>https://enterprisecraftsmanship.com/posts/modeling-relationships-in-ddd-way/</link>
+            <pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/modeling-relationships-in-ddd-way/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Let&amp;#8217;s talk about modeling of relationships, including the dreaded many-to-many
+                relationships, in a DDD way.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Encapsulating EF Core Usage: New Pluralsight course</title>
+            <link>https://enterprisecraftsmanship.com/posts/new-course-ef-core-encapsulation/</link>
+            <pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/new-course-ef-core-encapsulation/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;My new online training course about &lt;a href=&#34;https://enterprisecraftsmanship.com/ps-ef-core-2&#34;&gt;Encapsulating
+                EF Core Usage&lt;/a&gt; went live.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Collections and Primitive Obsession</title>
+            <link>https://enterprisecraftsmanship.com/posts/collections-primitive-obsession/</link>
+            <pubDate>Wed, 16 Feb 2022 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/collections-primitive-obsession/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Does the primitive obsession anti-pattern apply to collections? In other words, should you
+                introduce a custom class for a collection?&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>How to Assert Database State?</title>
+            <link>https://enterprisecraftsmanship.com/posts/how-to-assert-database-state/</link>
+            <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/how-to-assert-database-state/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Today, we&amp;#8217;ll discuss a question that relates to my &lt;a href=&#34;https://enterprisecraftsmanship.com/book-amazon&#34;&gt;Unit
+                Testing book&lt;/a&gt;: how to assert the state of the database?&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Should you Abstract the Database?</title>
+            <link>https://enterprisecraftsmanship.com/posts/should-you-abstract-database/</link>
+            <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/should-you-abstract-database/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This article is inspired by a tweet that I thought would be a good topic for discussion: should
+                you abstract your database?&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Database and Always-Valid Domain Model</title>
+            <link>https://enterprisecraftsmanship.com/posts/database-always-valid-domain-model/</link>
+            <pubDate>Tue, 31 Aug 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/database-always-valid-domain-model/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Today, we&amp;#8217;ll talk about an important question: how does the application database fit
+                into the concept of Always-Valid Domain Model?&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;In other words, is the database part of the always-valid boundary or should you consider it an
+                external system and validate all data coming from it?&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Specification Pattern vs Always-Valid Domain Model</title>
+            <link>https://enterprisecraftsmanship.com/posts/specification-pattern-always-valid-domain-model/</link>
+            <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/specification-pattern-always-valid-domain-model/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;There&amp;#8217;s an interesting controversy between two DDD topics: the Specification pattern
+                and the Always-Valid domain model.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Nulls in Value Objects</title>
+            <link>https://enterprisecraftsmanship.com/posts/nulls-in-value-objects/</link>
+            <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/nulls-in-value-objects/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Today, we&amp;#8217;ll discuss an interesting use case of handling nulls in value objects.
+                Should you put &lt;code&gt;null&lt;/code&gt; inside the value objects themselves or decorate those value
+                objects using the nullable reference type notation (&lt;code&gt;?&lt;/code&gt; or &lt;code&gt;Maybe&lt;/code&gt;)?&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Validation and DDD: New online course</title>
+            <link>https://enterprisecraftsmanship.com/posts/new-online-course-ddd-validation/</link>
+            <pubDate>Thu, 13 May 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/new-online-course-ddd-validation/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;My new online training course about &lt;a href=&#34;https://enterprisecraftsmanship.com/ps-ddd-validation&#34;&gt;Validation
+                and DDD&lt;/a&gt; went live.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Static methods considered evil?</title>
+            <link>https://enterprisecraftsmanship.com/posts/static-methods-evil/</link>
+            <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/static-methods-evil/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Are static methods good or bad? Over the course of my career I did a full circle on this topic.
+                In this article, I&amp;#8217;ll try to describe this evolution and the reasoning behind it.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Always-Valid Domain Model</title>
+            <link>https://enterprisecraftsmanship.com/posts/always-valid-domain-model/</link>
+            <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/always-valid-domain-model/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;&lt;strong&gt;UPDATE 5/13/2021&lt;/strong&gt;: the course has been published, check it now
+                here: &lt;a href=&#34;https://enterprisecraftsmanship.com/ps-ddd-validation&#34;&gt;Validation and DDD&lt;/a&gt;.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;I&amp;#8217;m working on a new Pluralsight course on the topic of validation and DDD, with the
+                help of the FluentValidation library and .NET data annotations (attributes). So expect a couple of posts
+                about validation in the near future.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>How to handle unique constraint violations</title>
+            <link>https://enterprisecraftsmanship.com/posts/handling-unique-constraint-violations/</link>
+            <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/handling-unique-constraint-violations/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Today, we&amp;#8217;ll discuss how to best handle unique constraint violations.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>C# 9 Records as DDD Value Objects</title>
+            <link>https://enterprisecraftsmanship.com/posts/csharp-records-value-objects/</link>
+            <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/csharp-records-value-objects/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Today, we&amp;#8217;ll talk about the new C# 9 feature, Records, and whether or not they can be
+                used as DDD value objects.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Domain model purity and lazy loading</title>
+            <link>https://enterprisecraftsmanship.com/posts/domain-model-purity-lazy-loading/</link>
+            <pubDate>Mon, 02 Nov 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/domain-model-purity-lazy-loading/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;I&amp;#8217;m continuing the &lt;a href=&#34;https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/&#34;&gt;topic
+                of domain model purity&lt;/a&gt;. &lt;a href=&#34;https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/&#34;&gt;Last
+                time&lt;/a&gt;, we talked about domain model purity in the context of getting the current date and time.
+                Today, we&amp;#8217;ll discuss it with regards to lazy loading.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Domain model purity and the current time</title>
+            <link>https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/</link>
+            <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;I&amp;#8217;m continuing the &lt;a href=&#34;https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/&#34;&gt;topic
+                of domain model purity&lt;/a&gt;. This time, we&amp;#8217;ll look at it with regards to getting the
+                current date and time.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;By the way, be sure to &lt;a href=&#34;https://enterprisecraftsmanship.com/subscribe/&#34;&gt;subscribe
+                to my email list&lt;/a&gt;. Not all discussions fit the format of a blog post (including some shorter
+                takes on the topic of domain model purity vs completeness). I send those out as emails instead.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Domain model purity vs. domain model completeness (DDD Trilemma)</title>
+            <link>https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/</link>
+            <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/domain-model-purity-completeness/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;I&amp;#8217;ve been meaning to write this article for a long time and, finally, here it is: the
+                topic of domain model purity versus domain model completeness.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Is Equality Comparison a Code Pollution?</title>
+            <link>https://enterprisecraftsmanship.com/posts/is-equality-comparison-code-pollution/</link>
+            <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/is-equality-comparison-code-pollution/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This post is about where to put the equality comparison logic: under the test or production
+                code.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>How to Unit Test an Abstract Class</title>
+            <link>https://enterprisecraftsmanship.com/posts/how-to-unit-test-an-abstract-class/</link>
+            <pubDate>Wed, 24 Jun 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/how-to-unit-test-an-abstract-class/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;How to unit test an abstract class? Or a whole class hierarchy that depends on that abstract
+                class? Let&amp;#8217;s see.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>DRY vs DAMP in Unit Tests</title>
+            <link>https://enterprisecraftsmanship.com/posts/dry-damp-unit-tests/</link>
+            <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/dry-damp-unit-tests/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;In this post, we&amp;#8217;ll make a deep dive into the DRY and DAMP principles and will talk
+                about the false dichotomy around them.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>How to Strengthen Requirements for Pre-existing Data</title>
+            <link>https://enterprisecraftsmanship.com/posts/strengthening-requirements-pre-existing-data/</link>
+            <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/strengthening-requirements-pre-existing-data/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Need to change validation rules but have pre-existing data that doesn&amp;#8217;t follow the
+                new rules? In this post, we&amp;#8217;ll talk about how to do that properly.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>When to Mock</title>
+            <link>https://enterprisecraftsmanship.com/posts/when-to-mock/</link>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/when-to-mock/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;The use of mocks in unit testing is a controversial topic (maybe less so now than several years
+                ago). I remember how, throughout my programming career, I went from mocking almost every dependency, to
+                the &#34;no-mocks&#34; policy, and then to &#34;only mock external dependencies&#34;.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;None of this practices are good enough. In this article, I&amp;#8217;ll show you which
+                dependencies to mock, and which to use as is in your tests.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Unit Testing Dependencies: The Complete Guide</title>
+            <link>https://enterprisecraftsmanship.com/posts/unit-testing-dependencies/</link>
+            <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/unit-testing-dependencies/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;In this article, we&amp;#8217;ll review the types of unit testing dependencies. This is more of
+                a reference article, to which I&amp;#8217;ll be referring in future posts. Still, this topic is
+                important for establishing the common vocabulary.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>EF Core and DDD: New online course</title>
+            <link>https://enterprisecraftsmanship.com/posts/new-online-course-ddd-and-ef-core/</link>
+            <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/new-online-course-ddd-and-ef-core/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;My new online training course DDD and EF Core: Preserving Encapsulation went live.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>3 things that will make or break your project</title>
+            <link>https://enterprisecraftsmanship.com/posts/3-things-that-will-make-or-break-your-project/</link>
+            <pubDate>Tue, 04 Feb 2020 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/3-things-that-will-make-or-break-your-project/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This article is about 3 things that can make or break any software project.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Assertion messages in tests</title>
+            <link>https://enterprisecraftsmanship.com/posts/assertion-messages-in-tests/</link>
+            <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/assertion-messages-in-tests/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;In this post, we&amp;#8217;ll talk about whether or not you should use assertion messages in
+                tests.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Is Entity the same as Value Object?</title>
+            <link>https://enterprisecraftsmanship.com/posts/is-entity-same-as-value-object/</link>
+            <pubDate>Mon, 25 Nov 2019 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/is-entity-same-as-value-object/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;In this post, we&amp;#8217;ll discuss an interesting question about whether the concepts of
+                Entity and Value Object are the same.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>DDD and bulk operations</title>
+            <link>https://enterprisecraftsmanship.com/posts/ddd-bulk-operations/</link>
+            <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/ddd-bulk-operations/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Combining bulk operations with Domain-Driven Design is a tough problem. In this article, we&amp;#8217;ll
+                look at why that is so and discuss ways to marry the two.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Combining ASP.NET Core validation attributes with Value Objects</title>
+            <link>https://enterprisecraftsmanship.com/posts/combining-asp-net-core-attributes-with-value-objects/</link>
+            <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/combining-asp-net-core-attributes-with-value-objects/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This is a continuation of the article series about some more advanced error handling
+                techniques.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Advanced error handling techniques</title>
+            <link>https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/</link>
+            <pubDate>Mon, 23 Sep 2019 00:00:00 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/advanced-error-handling-techniques/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This post describes some (more) advanced error handling techniques. I&amp;#8217;ll probably do
+                a series because this topic is large and there&amp;#8217;s quite a few things that need to be cleared
+                out, but we&amp;#8217;ll see.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>You are naming your tests wrong!</title>
+            <link>https://enterprisecraftsmanship.com/posts/you-naming-tests-wrong/</link>
+            <pubDate>Thu, 22 Aug 2019 12:55:20 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/you-naming-tests-wrong/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;Giving your tests expressive names is important. Proper naming helps understand what the test
+                verifies and how the underlying system behaves. In this post, we&amp;#8217;ll take a look at a popular,
+                yet inferior naming convention and see how it can be improved.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>I&#39;m writing a book!</title>
+            <link>https://enterprisecraftsmanship.com/posts/im-writing-book/</link>
+            <pubDate>Tue, 16 Jul 2019 13:17:01 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/im-writing-book/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;I&amp;#8217;m writing a book called &lt;strong&gt;Unit Testing: Principles, Patterns and
+                Practices&lt;/strong&gt;.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Merging domain events before dispatching</title>
+            <link>https://enterprisecraftsmanship.com/posts/merging-domain-events-dispatching/</link>
+            <pubDate>Thu, 06 Jun 2019 16:01:59 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/merging-domain-events-dispatching/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This post describes a common problem: how to deal with multiple domain events if raising of one
+                of them must negate the others.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>CQRS and exception handling</title>
+            <link>https://enterprisecraftsmanship.com/posts/cqrs-exception-handling/</link>
+            <pubDate>Mon, 15 Apr 2019 21:55:27 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/cqrs-exception-handling/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;In this article, I&amp;#8217;d like to discuss one particular aspect of exception handling
+                relevant to CQRS and the decorator pattern.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>When to validate commands in CQRS?</title>
+            <link>https://enterprisecraftsmanship.com/posts/validate-commands-cqrs/</link>
+            <pubDate>Wed, 20 Feb 2019 16:30:44 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/validate-commands-cqrs/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;There&amp;#8217;s a question that I didn&amp;#8217;t cover in the course and that was raised at
+                least twice since then: when to validate commands in CQRS?&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Are CQRS commands part of the domain model?</title>
+            <link>https://enterprisecraftsmanship.com/posts/cqrs-commands-part-domain-model/</link>
+            <pubDate>Thu, 31 Jan 2019 14:07:45 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/cqrs-commands-part-domain-model/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;I published an online course about CQRS a couple months ago, and since then I realized that
+                there are some topics I didn&amp;#8217;t put enough emphasize on in that course, or didn&amp;#8217;t
+                cover at all. In the next several blog posts, I&amp;#8217;m going to fill this gap.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>Hierarchy of value objects</title>
+            <link>https://enterprisecraftsmanship.com/posts/hierarchy-value-objects/</link>
+            <pubDate>Mon, 24 Dec 2018 17:23:01 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/hierarchy-value-objects/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This article is a response to a reader&amp;#8217;s question. The question posed an interesting
+                problem that I think will be interesting to a wider audience.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>CQRS vs Specification pattern</title>
+            <link>https://enterprisecraftsmanship.com/posts/cqrs-vs-specification-pattern/</link>
+            <pubDate>Tue, 06 Nov 2018 12:44:12 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/cqrs-vs-specification-pattern/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;This is an article about how two DDD patterns contradict each other.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+
+        <item>
+            <title>New online course: CQRS in Practice</title>
+            <link>https://enterprisecraftsmanship.com/posts/new-online-course-cqrs-in-practice/</link>
+            <pubDate>Fri, 12 Oct 2018 12:02:58 +0000</pubDate>
+
+            <guid>https://enterprisecraftsmanship.com/posts/new-online-course-cqrs-in-practice/</guid>
+            <description>&lt;div class=&#34;paragraph&#34;&gt;
+                &lt;p&gt;My new online training course CQRS in Practice went live.&lt;/p&gt;
+                &lt;/div&gt;
+            </description>
+        </item>
+    </channel>
+</rss>
