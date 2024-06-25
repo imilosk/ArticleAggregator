@@ -5,14 +5,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <RootNamespace>ArticleAggregator.Core</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.ServiceModel.Syndication" Version="8.0.0"/>
+        <ProjectReference Include="..\ArticleAggregator.Settings\ArticleAggregator.Settings.csproj"/>
+        <ProjectReference Include="..\Common.HtmlParsingTools\Common.HtmlParsingTools.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ArticleAggregator.DataModels\ArticleAggregator.DataModels.csproj"/>
+        <PackageReference Include="System.ServiceModel.Syndication" Version="8.0.0"/>
     </ItemGroup>
 
 </Project>

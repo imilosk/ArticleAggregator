@@ -1,0 +1,12 @@
+﻿services:
+  techarticleaggregator:
+    image: techarticleaggregator
+    build:
+      context: .
+      dockerfile: TechArticleAggregator/Dockerfile
+
+  dataingestionworker:
+    image: articleaggregator.dataingestionworker
+    build:
+      context: .
+      dockerfile: ArticleAggregator.DataIngestionWorker/Dockerfile
