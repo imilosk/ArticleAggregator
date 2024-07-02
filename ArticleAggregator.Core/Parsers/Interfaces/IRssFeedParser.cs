@@ -1,7 +1,7 @@
 using System.Xml;
 using ArticleAggregator.Core.DataModels;
 
-namespace ArticleAggregator.Core.Services.Interfaces;
+namespace ArticleAggregator.Core.Parsers.Interfaces;
 
 public interface IRssFeedParser
 {

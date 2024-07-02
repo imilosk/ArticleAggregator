@@ -2,12 +2,12 @@ using ArticleAggregator.DataIngest.Services.Interfaces;
 
 namespace ArticleAggregator.DataIngest.Jobs;
 
-public class IngestJob
+public class DataIngestJob
 {
-    private readonly ILogger<IngestJob> _logger;
+    private readonly ILogger<DataIngestJob> _logger;
     private readonly IDataIngestService _dataIngestService;
 
-    public IngestJob(ILogger<IngestJob> logger, IDataIngestService dataIngestService)
+    public DataIngestJob(ILogger<DataIngestJob> logger, IDataIngestService dataIngestService)
     {
         _logger = logger;
         _dataIngestService = dataIngestService;

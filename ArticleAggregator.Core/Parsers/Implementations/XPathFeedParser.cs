@@ -1,12 +1,12 @@
 using System.Globalization;
 using System.Xml.XPath;
 using ArticleAggregator.Core.DataModels;
-using ArticleAggregator.Core.Services.Interfaces;
+using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
 using Common.HtmlParsingTools;
 using Microsoft.Extensions.Logging;
 
-namespace ArticleAggregator.Core.Services.Implementations;
+namespace ArticleAggregator.Core.Parsers.Implementations;
 
 public class XPathFeedParser : IXPathFeedParser
 {

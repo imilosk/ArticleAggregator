@@ -1,11 +1,11 @@
 using System.ServiceModel.Syndication;
 using System.Xml;
 using ArticleAggregator.Core.DataModels;
-using ArticleAggregator.Core.Services.Interfaces;
+using ArticleAggregator.Core.Parsers.Interfaces;
 using Common.BaseTypeExtensions;
 using Microsoft.Extensions.Logging;
 
-namespace ArticleAggregator.Core.Services.Implementations;
+namespace ArticleAggregator.Core.Parsers.Implementations;
 
 public class RssFeedParser : IRssFeedParser
 {

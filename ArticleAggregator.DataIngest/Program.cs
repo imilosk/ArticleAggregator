@@ -18,11 +18,11 @@ builder.Services
 
 builder.Services
     .AddScoped<IDataIngestService, DataIngestService>()
-    .AddScoped<IngestJob>();
+    .AddScoped<DataIngestJob>();
 
 var host = builder.Build();
 
 var scope = host.Services.CreateScope();
-var job = scope.ServiceProvider.GetRequiredService<IngestJob>();
+var job = scope.ServiceProvider.GetRequiredService<DataIngestJob>();
 
 await job.ExecuteAsync();

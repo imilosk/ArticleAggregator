@@ -1,9 +1,9 @@
-using ArticleAggregator.Core.DataModels;
-using ArticleAggregator.Core.Services.Implementations;
-using ArticleAggregator.Core.Services.Interfaces;
+using ArticleAggregator.Core.Parsers.Implementations;
+using ArticleAggregator.Core.Parsers.Interfaces;
+using ArticleAggregator.Core.Repositories.Implementations;
+using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.Settings;
 using Common.BaseTypeExtensions;
-using Common.HtmlParsingTools;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,8 +22,10 @@ public static class ServiceCollectionExtensions
 
         serviceCollection
             .AddScoped<IRssFeedParser, RssFeedParser>()
-            .AddScoped<IXPathFeedParser, XPathFeedParser>()
-            .AddScoped<HtmlLoop<Article>>();
+            .AddScoped<IXPathFeedParser, XPathFeedParser>();
+
+        serviceCollection
+            .AddScoped<IArticleRepository, ArticleRepository>();
 
         return serviceCollection;
     }

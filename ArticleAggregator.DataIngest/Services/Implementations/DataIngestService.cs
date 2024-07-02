@@ -1,4 +1,5 @@
-using ArticleAggregator.Core.Services.Interfaces;
+using ArticleAggregator.Core.Parsers.Interfaces;
+using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.DataIngest.Services.Interfaces;
 using ArticleAggregator.Settings;
 
@@ -10,18 +11,21 @@ public class DataIngestService : IDataIngestService
     private readonly ScrapingSettings _scrapingSettings;
     private readonly IRssFeedParser _rssFeedParser;
     private readonly IXPathFeedParser _xPathFeedParser;
+    private readonly IArticleRepository _articleRepository;
 
     public DataIngestService(
         RssFeedSettings rssFeedSettings,
         ScrapingSettings scrapingSettings,
         IRssFeedParser rssFeedParser,
-        IXPathFeedParser xPathFeedParser
+        IXPathFeedParser xPathFeedParser,
+        IArticleRepository articleRepository
     )
     {
         _rssFeedSettings = rssFeedSettings;
         _scrapingSettings = scrapingSettings;
         _rssFeedParser = rssFeedParser;
         _xPathFeedParser = xPathFeedParser;
+        _articleRepository = articleRepository;
     }
 
     public Task Ingest()
@@ -29,13 +33,15 @@ public class DataIngestService : IDataIngestService
         foreach (var config in _rssFeedSettings.FeedConfigs)
         {
             var items = _rssFeedParser.Parse(config.BaseUrl);
-            // TODO: Write to DB
+
+            _articleRepository.CreateMany(items);
         }
 
         foreach (var config in _scrapingSettings.XPathConfigs)
         {
             var items = _xPathFeedParser.ParseFromWeb(config);
-            // TODO: Write to DB
+
+            _articleRepository.CreateMany(items);
         }
 
         return Task.CompletedTask;

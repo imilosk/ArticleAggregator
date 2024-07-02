@@ -1,6 +1,6 @@
 using ArticleAggregator.Core.DataModels;
-using ArticleAggregator.Core.Services.Implementations;
-using ArticleAggregator.Core.Services.Interfaces;
+using ArticleAggregator.Core.Parsers.Implementations;
+using ArticleAggregator.Core.Parsers.Interfaces;
 using Microsoft.Extensions.Logging;
 using Moq;
 
