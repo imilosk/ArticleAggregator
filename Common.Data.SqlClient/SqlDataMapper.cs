@@ -1,0 +1,56 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
+
+namespace Common.Data.SqlClient;
+
+public static class SqlDataMapper
+{
+    public static IList<DtoColumnMapping> GetColumnMapping<T>()
+    {
+        var type = typeof(T);
+        var columns = new List<DtoColumnMapping>();
+
+        foreach (var fieldInfo in type.GetFields())
+        {
+            if (ShouldSkip(fieldInfo))
+            {
+                continue;
+            }
+
+            columns.Add(new DtoColumnMapping
+            {
+                FieldName = fieldInfo.Name,
+                TableColumnName = GetDatabaseFieldName(fieldInfo),
+            });
+        }
+
+        return columns;
+    }
+
+    public static IList<string> GetColumnNames<T>()
+    {
+        var columnMapping = GetColumnMapping<T>();
+
+        return columnMapping.Select(mapping => mapping.FieldName).ToList();
+    }
+
+    private static bool ShouldSkip(FieldInfo fieldInfo)
+    {
+        var notMappedAttribute = fieldInfo.GetCustomAttribute(typeof(NotMappedAttribute), false);
+
+        return notMappedAttribute is not null;
+    }
+
+    private static string GetDatabaseFieldName(FieldInfo fieldInfo)
+    {
+        var columnAttribute = (ColumnAttribute?)fieldInfo.GetCustomAttribute(typeof(ColumnAttribute), false);
+
+        return columnAttribute?.Name ?? fieldInfo.Name;
+    }
+}
+
+public class DtoColumnMapping
+{
+    public string FieldName = string.Empty;
+    public string TableColumnName = string.Empty;
+}

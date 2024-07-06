@@ -4,11 +4,11 @@ namespace ArticleAggregator.Core.DataModels;
 
 public record Article
 {
-    [NotMapped] public long Id { get; set; }
-    public string Title { get; init; } = string.Empty;
-    public string Summary { get; init; } = string.Empty;
-    public string Author { get; init; } = string.Empty;
-    public required Uri Link { get; init; }
-    public DateTime PublishDate { get; init; }
-    public DateTime LastUpdatedTime { get; init; }
+    [NotMapped] public long Id;
+    public string Title = string.Empty;
+    public string Summary = string.Empty;
+    public string Author = string.Empty;
+    public required Uri Link;
+    public DateTime PublishDate;
+    public DateTime LastUpdatedTime;
 }

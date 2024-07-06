@@ -38,6 +38,7 @@ public static class ServiceCollectionExtensions
 
         serviceCollection
             .AddScoped<IDatabaseConnector, DatabaseConnector>()
+            .AddScoped<ISqlTransactionManager, SqlTransactionManager>()
             .AddScoped<IRssFeedParser, RssFeedParser>()
             .AddScoped<IXPathFeedParser, XPathFeedParser>()
             .AddScoped<IArticleRepository, ArticleRepository>()

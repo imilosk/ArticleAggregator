@@ -1,6 +1,7 @@
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.Schema;
+using Common.Data.SqlClient;
 using SqlKata.Execution;
 
 namespace ArticleAggregator.Core.Repositories.Implementations;
@@ -8,20 +9,19 @@ namespace ArticleAggregator.Core.Repositories.Implementations;
 public class ArticleRepository : IArticleRepository
 {
     private readonly QueryFactory _queryFactory;
+    private readonly ISqlTransactionManager _sqlTransactionManager;
 
-    private static readonly string[] Columns =
-    [
-        ArticleSchema.Columns.Title,
-        ArticleSchema.Columns.Summary,
-        ArticleSchema.Columns.Author,
-        ArticleSchema.Columns.Link,
-        ArticleSchema.Columns.PublishDate,
-        ArticleSchema.Columns.LastUpdatedTime,
-    ];
+    private static readonly IList<string> Columns;
 
-    public ArticleRepository(QueryFactory queryFactory)
+    static ArticleRepository()
+    {
+        Columns = SqlDataMapper.GetColumnNames<Article>();
+    }
+
+    public ArticleRepository(QueryFactory queryFactory, ISqlTransactionManager sqlTransactionManager)
     {
         _queryFactory = queryFactory;
+        _sqlTransactionManager = sqlTransactionManager;
     }
 
     public Task<Article> Get(long articleId)
@@ -46,18 +46,19 @@ public class ArticleRepository : IArticleRepository
 
     public async Task CreateMany(IList<Article> articles)
     {
+        using var transaction = _sqlTransactionManager.BeginTransaction(_queryFactory.Connection);
+
         var data = new List<object[]>();
         foreach (var article in articles)
         {
-            data.Add(new object[]
-            {
+            data.Add([
                 article.Title,
                 article.Summary,
                 article.Author,
                 article.Link.ToString(),
                 article.PublishDate,
-                article.LastUpdatedTime,
-            });
+                article.LastUpdatedTime
+            ]);
         }
 
         var query = _queryFactory
