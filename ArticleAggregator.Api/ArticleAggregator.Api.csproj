@@ -21,21 +21,21 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Update="appsettings.Production.json">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <None Update="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </Content>
-        <Content Update="appsettings.Development.json">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        </None>
+        <None Update="appsettings.Development.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </Content>
-        <Content Update="appsettings.json">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        </None>
+        <None Update="appsettings.Production.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </Content>
+        </None>
+        <None Update="secrets.Development.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="secrets.Production.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

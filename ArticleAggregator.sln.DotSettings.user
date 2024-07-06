@@ -5,7 +5,7 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=265e0d23_002D7005_002D42c4_002D98c7_002D8a70f5623014/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ParseRssFeed_BasicParse_ReturnsValueTuple" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Project Location="/Users/miloshkostadinovski/Development/TechArticleAggregator/ArticleAggregator.UnitTests" Presentation="&amp;lt;ArticleAggregator.UnitTests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=75cdcf7f_002D74b1_002D4266_002D8760_002D0c448eb433a1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ParseRssFeed_Basic_ReturnsResult" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=75cdcf7f_002D74b1_002D4266_002D8760_002D0c448eb433a1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ParseRssFeed_Basic_ReturnsResult" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::F3A121A2-569C-4A8E-B778-84DFE0714CA1::net8.0::ArticleAggregator.UnitTests.RssFeedTests.ParseRssFeed_BasicParse_ReturnsValueTuple&lt;/TestId&gt;
   &lt;/TestAncestor&gt;

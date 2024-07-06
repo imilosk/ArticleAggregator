@@ -4,8 +4,12 @@ using ArticleAggregator.Core.Repositories.Implementations;
 using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.Settings;
 using Common.BaseTypeExtensions;
+using Common.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SqlKata.Compilers;
+using SqlKata.Execution;
 
 namespace ArticleAggregator.Core.Extensions;
 
@@ -17,15 +21,27 @@ public static class ServiceCollectionExtensions
     )
     {
         serviceCollection
+            .AddAndValidateServiceOptions<DatabaseSettings>(configuration)
             .AddAndValidateServiceOptions<RssFeedSettings>(configuration)
             .AddAndValidateServiceOptions<ScrapingSettings>(configuration);
 
-        serviceCollection
-            .AddScoped<IRssFeedParser, RssFeedParser>()
-            .AddScoped<IXPathFeedParser, XPathFeedParser>();
+        serviceCollection.AddScoped<QueryFactory>(x =>
+        {
+            var databaseConnector = x.GetRequiredService<IDatabaseConnector>();
+            var connectionString = databaseConnector.GetConnection().ConnectionString;
+
+            var connection = new SqliteConnection(connectionString);
+            var compiler = new SqliteCompiler();
+
+            return new QueryFactory(connection, compiler);
+        });
 
         serviceCollection
-            .AddScoped<IArticleRepository, ArticleRepository>();
+            .AddScoped<IDatabaseConnector, DatabaseConnector>()
+            .AddScoped<IRssFeedParser, RssFeedParser>()
+            .AddScoped<IXPathFeedParser, XPathFeedParser>()
+            .AddScoped<IArticleRepository, ArticleRepository>()
+            ;
 
         return serviceCollection;
     }

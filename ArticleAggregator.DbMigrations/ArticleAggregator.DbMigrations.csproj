@@ -20,6 +20,32 @@
         <PackageReference Include="FluentMigrator.Runner" Version="5.2.0"/>
         <PackageReference Include="FluentMigrator.Runner.SQLite" Version="5.2.0"/>
         <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ArticleAggregator.Schema\ArticleAggregator.Schema.csproj"/>
+        <ProjectReference Include="..\Common.BaseTypeExtensions\Common.BaseTypeExtensions.csproj"/>
+        <ProjectReference Include="..\Common.Data.SqlClient\Common.Data.SqlClient.csproj"/>
+        <ProjectReference Include="..\ArticleAggregator.Settings\ArticleAggregator.Settings.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="appsettings.Development.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="appsettings.Production.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="secrets.Development.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="secrets.Production.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

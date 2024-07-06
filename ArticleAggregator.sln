@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Core", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data.SqlClient", "Common.Data.SqlClient\Common.Data.SqlClient.csproj", "{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Schema", "ArticleAggregator.Schema\ArticleAggregator.Schema.csproj", "{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,5 +67,9 @@ Global
 		{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

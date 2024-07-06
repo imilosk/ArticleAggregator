@@ -28,22 +28,20 @@ public class DataIngestService : IDataIngestService
         _articleRepository = articleRepository;
     }
 
-    public Task Ingest()
+    public async Task Ingest()
     {
         foreach (var config in _rssFeedSettings.FeedConfigs)
         {
             var items = _rssFeedParser.Parse(config.BaseUrl);
 
-            _articleRepository.CreateMany(items);
+            await _articleRepository.CreateMany(items);
         }
 
         foreach (var config in _scrapingSettings.XPathConfigs)
         {
             var items = _xPathFeedParser.ParseFromWeb(config);
 
-            _articleRepository.CreateMany(items);
+            await _articleRepository.CreateMany(items);
         }
-
-        return Task.CompletedTask;
     }
 }

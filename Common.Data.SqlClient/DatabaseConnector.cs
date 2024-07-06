@@ -10,7 +10,7 @@ public class DatabaseConnector : IDatabaseConnector
     public DatabaseConnector(DatabaseSettings settings)
     {
         _connectionString = settings.ConnectionStringTemplate
-            .Replace("<File>", settings.File);
+            .Replace("<FILE>", settings.File);
     }
 
     public IDbConnection GetConnection()
