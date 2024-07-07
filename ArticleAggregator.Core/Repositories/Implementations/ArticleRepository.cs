@@ -1,3 +1,4 @@
+using System.Data;
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.Schema;
@@ -11,8 +12,6 @@ public class ArticleRepository : IArticleRepository
 {
     private readonly QueryFactory _queryFactory;
     private readonly ISqlTransactionManager _sqlTransactionManager;
-
-    private static readonly string UpsertSql;
     private static readonly string InsertSql;
 
     static ArticleRepository()
@@ -22,8 +21,7 @@ public class ArticleRepository : IArticleRepository
         var columnsString = string.Join(",", columns);
         var parametersString = string.Join(", ", columns.Select(c => "@" + c));
 
-        InsertSql = $"INSERT OR IGNORE INTO Article ({columnsString}) VALUES ({parametersString})";
-        UpsertSql = $"INSERT OR REPLACE INTO Article ({columnsString}) VALUES ({parametersString})";
+        InsertSql = $"INSERT OR IGNORE INTO {ArticleSchema.TableName} ({columnsString}) VALUES ({parametersString})";
     }
 
     public ArticleRepository(QueryFactory queryFactory, ISqlTransactionManager sqlTransactionManager)
@@ -39,6 +37,14 @@ public class ArticleRepository : IArticleRepository
             .FirstOrDefaultAsync<Article>();
     }
 
+    public async Task<Article?> Get(Uri link)
+    {
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .Where(ArticleSchema.Columns.Link, link.ToString())
+            .FirstOrDefaultAsync<Article>();
+    }
+
     public async Task<bool> Exists(long articleId)
     {
         return await _queryFactory
@@ -46,25 +52,34 @@ public class ArticleRepository : IArticleRepository
             .ExistsAsync();
     }
 
-    public async Task<bool> Exists(Uri link)
+    public async Task<bool> Exists(Article article)
     {
         return await _queryFactory
             .Query(ArticleSchema.TableName)
-            .Where(ArticleSchema.Columns.Link, link.ToString())
+            .Where(ArticleSchema.Columns.Link, article.Link)
             .ExistsAsync();
     }
 
-    public async Task<int> Create(Article article)
+    public async Task<int> Create(Article article, IDbTransaction? transaction = null)
     {
-        return await _queryFactory.Connection.ExecuteAsync(InsertSql, article);
+        return await _queryFactory.Connection.ExecuteAsync(InsertSql, article, transaction);
     }
 
-    public async Task<int> Update(Article article)
+    public async Task<int> Update(Article article, IDbTransaction? transaction = null)
     {
         return await _queryFactory
             .Query(ArticleSchema.TableName)
-            .Where(ArticleSchema.Columns.Id, article.Id)
-            .UpdateAsync(article);
+            .Where(ArticleSchema.Columns.Link, article.Link)
+            .UpdateAsync(new
+            {
+                article.Title,
+                article.Summary,
+                article.Author,
+                article.Link,
+                article.PublishDate,
+                article.LastUpdatedTime,
+                article.Source,
+            }, transaction);
     }
 
     public async Task<int> Delete(long articleId)
@@ -79,12 +94,24 @@ public class ArticleRepository : IArticleRepository
     {
         using var transaction = _sqlTransactionManager.BeginTransaction(_queryFactory.Connection);
 
+        var rowsAffected = 0;
+
         if (articles.Count == 0)
         {
-            return 0;
+            return rowsAffected;
         }
 
-        var rowsAffected = await _queryFactory.Connection.ExecuteAsync(UpsertSql, articles, transaction);
+        foreach (var article in articles)
+        {
+            if (await Exists(article))
+            {
+                rowsAffected += await Update(article, transaction);
+            }
+            else
+            {
+                rowsAffected += await Create(article, transaction);
+            }
+        }
 
         transaction?.Commit();
 
