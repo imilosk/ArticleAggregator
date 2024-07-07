@@ -8,7 +8,7 @@ public interface IArticleRepository
     Task<bool> Exists(long articleId);
     Task<bool> Exists(Uri link);
     Task<int> Create(Article article);
-    Task<bool> Update(Article article);
-    Task<bool> Delete(long articleId);
-    Task UpsertMany(IList<Article> articles);
+    Task<int> Update(Article article);
+    Task<int> Delete(long articleId);
+    Task<int> UpsertMany(IList<Article> articles);
 }

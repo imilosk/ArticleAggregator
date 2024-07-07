@@ -12,7 +12,8 @@ public class ArticleRepository : IArticleRepository
     private readonly QueryFactory _queryFactory;
     private readonly ISqlTransactionManager _sqlTransactionManager;
 
-    private static readonly string InsertIntoSql;
+    private static readonly string UpsertSql;
+    private static readonly string InsertSql;
 
     static ArticleRepository()
     {
@@ -21,7 +22,8 @@ public class ArticleRepository : IArticleRepository
         var columnsString = string.Join(",", columns);
         var parametersString = string.Join(", ", columns.Select(c => "@" + c));
 
-        InsertIntoSql = $"INSERT OR REPLACE INTO Article ({columnsString}) VALUES ({parametersString})";
+        InsertSql = $"INSERT OR IGNORE INTO Article ({columnsString}) VALUES ({parametersString})";
+        UpsertSql = $"INSERT OR REPLACE INTO Article ({columnsString}) VALUES ({parametersString})";
     }
 
     public ArticleRepository(QueryFactory queryFactory, ISqlTransactionManager sqlTransactionManager)
@@ -52,32 +54,40 @@ public class ArticleRepository : IArticleRepository
             .ExistsAsync();
     }
 
-    public Task<int> Create(Article article)
+    public async Task<int> Create(Article article)
     {
-        throw new NotImplementedException();
+        return await _queryFactory.Connection.ExecuteAsync(InsertSql, article);
     }
 
-    public Task<bool> Update(Article article)
+    public async Task<int> Update(Article article)
     {
-        throw new NotImplementedException();
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .Where(ArticleSchema.Columns.Id, article.Id)
+            .UpdateAsync(article);
     }
 
-    public Task<bool> Delete(long articleId)
+    public async Task<int> Delete(long articleId)
     {
-        throw new NotImplementedException();
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .Where(ArticleSchema.Columns.Id, articleId)
+            .DeleteAsync();
     }
 
-    public async Task UpsertMany(IList<Article> articles)
+    public async Task<int> UpsertMany(IList<Article> articles)
     {
         using var transaction = _sqlTransactionManager.BeginTransaction(_queryFactory.Connection);
 
         if (articles.Count == 0)
         {
-            return;
+            return 0;
         }
 
-        _ = await _queryFactory.Connection.ExecuteAsync(InsertIntoSql, articles);
+        var rowsAffected = await _queryFactory.Connection.ExecuteAsync(UpsertSql, articles, transaction);
 
         transaction?.Commit();
+
+        return rowsAffected;
     }
 }
