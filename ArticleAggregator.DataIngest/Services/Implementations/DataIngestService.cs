@@ -34,14 +34,14 @@ public class DataIngestService : IDataIngestService
         {
             var items = _rssFeedParser.Parse(config.BaseUrl);
 
-            await _articleRepository.CreateMany(items);
+            await _articleRepository.CreateManyIfNotExists(items);
         }
 
         foreach (var config in _scrapingSettings.XPathConfigs)
         {
             var items = _xPathFeedParser.ParseFromWeb(config);
 
-            await _articleRepository.CreateMany(items);
+            await _articleRepository.CreateManyIfNotExists(items);
         }
     }
 }

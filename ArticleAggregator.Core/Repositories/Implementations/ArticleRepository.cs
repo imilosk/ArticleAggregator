@@ -24,9 +24,26 @@ public class ArticleRepository : IArticleRepository
         _sqlTransactionManager = sqlTransactionManager;
     }
 
-    public Task<Article> Get(long articleId)
+    public async Task<Article?> Get(long articleId)
     {
-        throw new NotImplementedException();
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .FirstOrDefaultAsync<Article>();
+    }
+
+    public async Task<bool> Exists(long articleId)
+    {
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .ExistsAsync();
+    }
+
+    public async Task<bool> Exists(Uri link)
+    {
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .Where(ArticleSchema.Columns.Link, link.ToString())
+            .ExistsAsync();
     }
 
     public Task<int> Create(Article article)
@@ -61,10 +78,52 @@ public class ArticleRepository : IArticleRepository
             ]);
         }
 
+        if (data.Count == 0)
+        {
+            return;
+        }
+
         var query = _queryFactory
             .Query(ArticleSchema.TableName)
             .AsInsert(Columns, data);
 
         await _queryFactory.ExecuteAsync(query, transaction);
+
+        transaction?.Commit();
+    }
+
+    public async Task CreateManyIfNotExists(IList<Article> articles)
+    {
+        using var transaction = _sqlTransactionManager.BeginTransaction(_queryFactory.Connection);
+
+        var data = new List<object[]>();
+        foreach (var article in articles)
+        {
+            var articleExists = await Exists(article.Link);
+            if (!articleExists)
+            {
+                data.Add([
+                    article.Title,
+                    article.Summary,
+                    article.Author,
+                    article.Link.ToString(),
+                    article.PublishDate,
+                    article.LastUpdatedTime,
+                ]);
+            }
+        }
+
+        if (data.Count == 0)
+        {
+            return;
+        }
+
+        var query = _queryFactory
+            .Query(ArticleSchema.TableName)
+            .AsInsert(Columns, data);
+
+        await _queryFactory.ExecuteAsync(query, transaction);
+
+        transaction?.Commit();
     }
 }
