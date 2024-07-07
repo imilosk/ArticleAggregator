@@ -15,6 +15,7 @@ public class AddArticlesTable : ForwardOnlyMigration
             .WithColumn(ArticleSchema.Columns.Author).AsString()
             .WithColumn(ArticleSchema.Columns.Link).AsString().Unique()
             .WithColumn(ArticleSchema.Columns.PublishDate).AsDateTime2()
-            .WithColumn(ArticleSchema.Columns.LastUpdatedTime).AsDateTime2();
+            .WithColumn(ArticleSchema.Columns.LastUpdatedTime).AsDateTime2()
+            .WithColumn(ArticleSchema.Columns.Source).AsString();
     }
 }

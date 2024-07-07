@@ -1,5 +1,6 @@
 using System.ServiceModel.Syndication;
 using System.Xml;
+using ArticleAggregator.Constants;
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using Common.BaseTypeExtensions;
@@ -45,6 +46,7 @@ public class RssFeedParser : IRssFeedParser
                 LinkUri = item.Links.First().Uri,
                 PublishDate = item.PublishDate.DateTime,
                 LastUpdatedTime = item.LastUpdatedTime.DateTime,
+                Source = ArticleSource.Rss,
             });
         }
 

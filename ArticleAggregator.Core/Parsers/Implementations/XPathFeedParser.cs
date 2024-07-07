@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Xml.XPath;
+using ArticleAggregator.Constants;
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
@@ -49,6 +50,7 @@ public class XPathFeedParser : IXPathFeedParser
                 navigator.GetValueOrDefault(config.PublishDateXPath, DateTime.MinValue, DefaultCultureInfo),
             LastUpdatedTime =
                 navigator.GetValueOrDefault(config.UpdateDateXPath, DateTime.MinValue, DefaultCultureInfo),
+            Source = ArticleSource.XPath,
         };
 
         items.Add(article);

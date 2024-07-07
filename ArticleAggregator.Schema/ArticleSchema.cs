@@ -13,5 +13,6 @@ public static class ArticleSchema
         public const string Link = "Link";
         public const string PublishDate = "PublishDate";
         public const string LastUpdatedTime = "LastUpdatedTime";
+        public const string Source = "Source";
     }
 }

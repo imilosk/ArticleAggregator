@@ -13,4 +13,5 @@ public record Article
     [NotMapped] public required Uri LinkUri;
     public DateTime PublishDate { get; init; }
     public DateTime LastUpdatedTime { get; init; }
+    public string Source { get; set; } = string.Empty;
 }

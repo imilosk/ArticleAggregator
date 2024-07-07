@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\ArticleAggregator.Constants\ArticleAggregator.Constants.csproj"/>
         <ProjectReference Include="..\ArticleAggregator.Schema\ArticleAggregator.Schema.csproj"/>
         <ProjectReference Include="..\ArticleAggregator.Settings\ArticleAggregator.Settings.csproj"/>
         <ProjectReference Include="..\Common.Data.SqlClient\Common.Data.SqlClient.csproj"/>
