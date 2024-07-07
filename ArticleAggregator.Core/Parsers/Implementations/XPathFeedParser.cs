@@ -44,7 +44,7 @@ public class XPathFeedParser : IXPathFeedParser
             Title = navigator.GetValueOrDefault(config.TitleXPath, string.Empty, DefaultCultureInfo),
             Summary = navigator.GetValueOrDefault(config.SummaryXPath, string.Empty, DefaultCultureInfo),
             Author = navigator.GetValueOrDefault(config.AuthorXPath, string.Empty, DefaultCultureInfo),
-            Link = new Uri(navigator.GetValueOrDefault(config.LinkXPath, string.Empty, DefaultCultureInfo)),
+            LinkUri = new Uri(navigator.GetValueOrDefault(config.LinkXPath, string.Empty, DefaultCultureInfo)),
             PublishDate =
                 navigator.GetValueOrDefault(config.PublishDateXPath, DateTime.MinValue, DefaultCultureInfo),
             LastUpdatedTime =

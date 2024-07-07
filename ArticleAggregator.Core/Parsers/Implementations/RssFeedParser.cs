@@ -42,7 +42,7 @@ public class RssFeedParser : IRssFeedParser
                 Title = item.Title.Text,
                 Summary = item.Summary.Text,
                 Author = item.Authors.Count > 0 ? item.Authors.First().Name : string.Empty, // TODO: Add author fallback
-                Link = item.Links.First().Uri,
+                LinkUri = item.Links.First().Uri,
                 PublishDate = item.PublishDate.DateTime,
                 LastUpdatedTime = item.LastUpdatedTime.DateTime,
             });

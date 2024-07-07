@@ -10,6 +10,5 @@ public interface IArticleRepository
     Task<int> Create(Article article);
     Task<bool> Update(Article article);
     Task<bool> Delete(long articleId);
-    Task CreateMany(IList<Article> articles);
-    Task CreateManyIfNotExists(IList<Article> articles);
+    Task UpsertMany(IList<Article> articles);
 }

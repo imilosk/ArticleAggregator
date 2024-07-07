@@ -3,7 +3,7 @@ using FluentMigrator;
 
 namespace ArticleAggregator.DbMigrations.Migrations;
 
-[Migration(202406252237)]
+[Migration(2024_06_25__22_37)]
 public class AddArticlesTable : ForwardOnlyMigration
 {
     public override void Up()
@@ -13,7 +13,7 @@ public class AddArticlesTable : ForwardOnlyMigration
             .WithColumn(ArticleSchema.Columns.Title).AsString()
             .WithColumn(ArticleSchema.Columns.Summary).AsString()
             .WithColumn(ArticleSchema.Columns.Author).AsString()
-            .WithColumn(ArticleSchema.Columns.Link).AsString()
+            .WithColumn(ArticleSchema.Columns.Link).AsString().Unique()
             .WithColumn(ArticleSchema.Columns.PublishDate).AsDateTime2()
             .WithColumn(ArticleSchema.Columns.LastUpdatedTime).AsDateTime2();
     }

@@ -8,7 +8,9 @@ public record Article
     public string Title { get; init; } = string.Empty;
     public string Summary { get; init; } = string.Empty;
     public string Author { get; init; } = string.Empty;
-    public required Uri Link { get; init; }
+    public string Link => LinkUri.ToString();
+
+    [NotMapped] public required Uri LinkUri;
     public DateTime PublishDate { get; init; }
     public DateTime LastUpdatedTime { get; init; }
 }
