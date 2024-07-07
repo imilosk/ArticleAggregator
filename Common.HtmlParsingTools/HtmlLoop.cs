@@ -5,19 +5,18 @@ using HtmlAgilityPack;
 
 namespace Common.HtmlParsingTools;
 
-public class HtmlLoop<T>
+public class HtmlLoop
 {
     private readonly HtmlWeb _htmlWeb = new();
 
-    public IList<T> Parse(
+    public void Parse(
         string url,
         string mainElementXPath,
         string nextPageXPath,
         CultureInfo cultureInfo,
-        Func<XPathNavigator, T> delegateAction
+        Action<XPathNavigator> delegateAction
     )
     {
-        var items = new List<T>();
         var currentPage = url;
 
         while (!currentPage.IsNullOrEmpty())
@@ -25,7 +24,7 @@ public class HtmlLoop<T>
             var htmlDocument = _htmlWeb.Load(currentPage);
             var rootNode = htmlDocument.DocumentNode ?? throw new Exception("Root element is null");
 
-            var itemsAddedCount = ScrapePage(rootNode, items, mainElementXPath, delegateAction);
+            var itemsAddedCount = ScrapePage(rootNode, mainElementXPath, delegateAction);
 
             if (itemsAddedCount == 0)
             {
@@ -34,8 +33,6 @@ public class HtmlLoop<T>
 
             currentPage = GetNextPageUrl(rootNode, nextPageXPath, cultureInfo);
         }
-
-        return items;
     }
 
     private static string? GetNextPageUrl(HtmlNode root, string nextPageXPath, CultureInfo cultureInfo)
@@ -47,9 +44,8 @@ public class HtmlLoop<T>
 
     private static int ScrapePage(
         HtmlNode root,
-        IList<T> items,
         string mainElementXPath,
-        Func<XPathNavigator, T> delegateAction
+        Action<XPathNavigator> delegateAction
     )
     {
         var nodes = root.SelectNodes(mainElementXPath) ?? throw new Exception("No nodes found");
@@ -57,8 +53,7 @@ public class HtmlLoop<T>
         foreach (var node in nodes)
         {
             var navigator = node.CreateNavigator() ?? throw new Exception("Node navigator is null");
-            var item = delegateAction(navigator);
-            items.Add(item);
+            delegateAction(navigator);
         }
 
         return nodes.Count;

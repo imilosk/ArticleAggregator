@@ -57,7 +57,7 @@ public class ArticleRepository : IArticleRepository
                 article.Author,
                 article.Link.ToString(),
                 article.PublishDate,
-                article.LastUpdatedTime
+                article.LastUpdatedTime,
             ]);
         }
 
@@ -65,6 +65,6 @@ public class ArticleRepository : IArticleRepository
             .Query(ArticleSchema.TableName)
             .AsInsert(Columns, data);
 
-        await _queryFactory.ExecuteAsync(query);
+        await _queryFactory.ExecuteAsync(query, transaction);
     }
 }

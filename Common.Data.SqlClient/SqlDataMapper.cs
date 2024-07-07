@@ -10,7 +10,7 @@ public static class SqlDataMapper
         var type = typeof(T);
         var columns = new List<DtoColumnMapping>();
 
-        foreach (var fieldInfo in type.GetFields())
+        foreach (var fieldInfo in type.GetProperties())
         {
             if (ShouldSkip(fieldInfo))
             {
@@ -34,14 +34,14 @@ public static class SqlDataMapper
         return columnMapping.Select(mapping => mapping.FieldName).ToList();
     }
 
-    private static bool ShouldSkip(FieldInfo fieldInfo)
+    private static bool ShouldSkip(PropertyInfo fieldInfo)
     {
         var notMappedAttribute = fieldInfo.GetCustomAttribute(typeof(NotMappedAttribute), false);
 
         return notMappedAttribute is not null;
     }
 
-    private static string GetDatabaseFieldName(FieldInfo fieldInfo)
+    private static string GetDatabaseFieldName(PropertyInfo fieldInfo)
     {
         var columnAttribute = (ColumnAttribute?)fieldInfo.GetCustomAttribute(typeof(ColumnAttribute), false);
 

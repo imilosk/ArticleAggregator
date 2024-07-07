@@ -11,18 +11,20 @@ namespace ArticleAggregator.Core.Parsers.Implementations;
 public class XPathFeedParser : IXPathFeedParser
 {
     private readonly ILogger<XPathFeedParser> _logger;
-    private readonly HtmlLoop<Article> _htmlLoop;
+    private readonly HtmlLoop _htmlLoop;
     private static readonly CultureInfo DefaultCultureInfo = CultureInfo.InvariantCulture;
 
     public XPathFeedParser(ILogger<XPathFeedParser> logger)
     {
         _logger = logger;
-        _htmlLoop = new HtmlLoop<Article>();
+        _htmlLoop = new HtmlLoop();
     }
 
     public IList<Article> ParseFromWeb(XPathConfig config)
     {
-        return _htmlLoop.Parse(
+        var items = new List<Article>();
+
+        _htmlLoop.Parse(
             config.BaseUrl,
             config.ArticleXPath,
             config.NextPageXPath,
@@ -30,10 +32,12 @@ public class XPathFeedParser : IXPathFeedParser
             DelegateAction
         );
 
-        Article DelegateAction(XPathNavigator navigator) => ParseArticle(navigator, config);
+        return items;
+
+        void DelegateAction(XPathNavigator navigator) => ParseArticle(navigator, config, items);
     }
 
-    private Article ParseArticle(XPathNavigator navigator, XPathConfig config)
+    private void ParseArticle(XPathNavigator navigator, XPathConfig config, List<Article> items)
     {
         var article = new Article
         {
@@ -47,8 +51,8 @@ public class XPathFeedParser : IXPathFeedParser
                 navigator.GetValueOrDefault(config.UpdateDateXPath, DateTime.MinValue, DefaultCultureInfo),
         };
 
-        _logger.LogInformation("Parsed element with title: {title}", article.Title);
+        items.Add(article);
 
-        return article;
+        _logger.LogInformation("Parsed element with title: {title}", article.Title);
     }
 }
