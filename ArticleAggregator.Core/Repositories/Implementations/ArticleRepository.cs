@@ -17,11 +17,7 @@ public class ArticleRepository : IArticleRepository
     static ArticleRepository()
     {
         var columns = SqlDataMapper.GetColumnNames<Article>();
-
-        var columnsString = string.Join(",", columns);
-        var parametersString = string.Join(", ", columns.Select(c => "@" + c));
-
-        InsertSql = $"INSERT OR IGNORE INTO {ArticleSchema.TableName} ({columnsString}) VALUES ({parametersString})";
+        InsertSql = GenerateInsertStatement(columns);
     }
 
     public ArticleRepository(QueryFactory queryFactory, ISqlTransactionManager sqlTransactionManager)
@@ -116,5 +112,13 @@ public class ArticleRepository : IArticleRepository
         transaction?.Commit();
 
         return rowsAffected;
+    }
+
+    private static string GenerateInsertStatement(IList<string> columns)
+    {
+        var columnsString = string.Join(",", columns);
+        var parametersString = string.Join(", ", columns.Select(c => "@" + c));
+
+        return $"INSERT OR IGNORE INTO {ArticleSchema.TableName} ({columnsString}) VALUES ({parametersString})";
     }
 }
