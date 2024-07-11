@@ -6,13 +6,13 @@ public static class ArticleSchema
 
     public static class Columns
     {
-        public const string Id = "Id";
-        public const string Title = "Title";
-        public const string Summary = "Summary";
-        public const string Author = "Author";
-        public const string Link = "Link";
-        public const string PublishDate = "PublishDate";
-        public const string LastUpdatedTime = "LastUpdatedTime";
-        public const string Source = "Source";
+        public const string Id = nameof(Id);
+        public const string Title = nameof(Title);
+        public const string Summary = nameof(Summary);
+        public const string Author = nameof(Author);
+        public const string Link = nameof(Link);
+        public const string PublishDate = nameof(PublishDate);
+        public const string LastUpdatedTime = nameof(LastUpdatedTime);
+        public const string Source = nameof(Source);
     }
 }
