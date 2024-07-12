@@ -1,15 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+namespace ArticleAggregator.Core.DataModels.Responses;
 
-namespace ArticleAggregator.Core.DataModels;
-
-public record Article
+public class ArticleResponse
 {
-    [NotMapped] public long Id { get; set; }
+    public long Id { get; set; }
     public string Title { get; init; } = string.Empty;
     public string Summary { get; init; } = string.Empty;
     public string Author { get; init; } = string.Empty;
-    public required Uri Link;
+    public string Link { get; init; } = string.Empty;
     public DateTime PublishDate { get; init; }
     public DateTime LastUpdatedTime { get; init; }
-    public string Source { get; init; } = string.Empty;
 }

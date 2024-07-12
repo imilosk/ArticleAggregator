@@ -37,8 +37,17 @@ public class ArticleRepository : IArticleRepository
     {
         return await _queryFactory
             .Query(ArticleSchema.TableName)
-            .Where(ArticleSchema.Columns.Link, link.ToString())
+            .Where(ArticleSchema.Columns.Link, link)
             .FirstOrDefaultAsync<Article>();
+    }
+
+    public async Task<IEnumerable<Article>> GetMany(int page = 1, int pageSize = 100)
+    {
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .GetAsync<Article>();
     }
 
     public async Task<bool> Exists(long articleId)
@@ -48,11 +57,11 @@ public class ArticleRepository : IArticleRepository
             .ExistsAsync();
     }
 
-    public async Task<bool> Exists(Article article)
+    public async Task<bool> Exists(Uri link)
     {
         return await _queryFactory
             .Query(ArticleSchema.TableName)
-            .Where(ArticleSchema.Columns.Link, article.Link)
+            .Where(ArticleSchema.Columns.Link, link)
             .ExistsAsync();
     }
 
@@ -99,7 +108,7 @@ public class ArticleRepository : IArticleRepository
 
         foreach (var article in articles)
         {
-            if (await Exists(article))
+            if (await Exists(article.Link))
             {
                 rowsAffected += await Update(article, transaction);
             }

@@ -5,6 +5,8 @@ using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.Settings;
 using Common.BaseTypeExtensions;
 using Common.Data.SqlClient;
+using Common.Data.SqlClient.Mappers;
+using Dapper;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +45,9 @@ public static class ServiceCollectionExtensions
             .AddScoped<IXPathFeedParser, XPathFeedParser>()
             .AddScoped<IArticleRepository, ArticleRepository>()
             ;
+
+        SqlMapper.AddTypeHandler(new SqlUriTypeHandler());
+        SqlMapper.RemoveTypeMap(typeof(Uri));
 
         return serviceCollection;
     }
