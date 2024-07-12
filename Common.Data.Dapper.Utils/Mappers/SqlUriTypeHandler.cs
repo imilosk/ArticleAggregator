@@ -1,7 +1,7 @@
 using System.Data;
 using Dapper;
 
-namespace Common.Data.SqlClient.Mappers;
+namespace Common.Data.Dapper.Utils.Mappers;
 
 public class SqlUriTypeHandler : SqlMapper.TypeHandler<Uri>
 {

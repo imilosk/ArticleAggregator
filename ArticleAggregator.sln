@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Schema", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Constants", "ArticleAggregator.Constants\ArticleAggregator.Constants.csproj", "{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data.Dapper.Utils", "Common.Data.Dapper.Utils\Common.Data.Dapper.Utils.csproj", "{DE70D959-510B-4403-A3C7-D009F8587038}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,5 +79,9 @@ Global
 		{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE70D959-510B-4403-A3C7-D009F8587038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE70D959-510B-4403-A3C7-D009F8587038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE70D959-510B-4403-A3C7-D009F8587038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE70D959-510B-4403-A3C7-D009F8587038}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
