@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Xml.XPath;
 using Common.BaseTypeExtensions;
 
-namespace Common.HtmlParsingTools;
+namespace Common.HtmlParsingUtils;
 
 public static class XPathNavigatorExtensions
 {

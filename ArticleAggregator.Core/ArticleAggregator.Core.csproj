@@ -14,7 +14,7 @@
         <ProjectReference Include="..\ArticleAggregator.Settings\ArticleAggregator.Settings.csproj"/>
         <ProjectReference Include="..\Common.Data.Dapper.Utils\Common.Data.Dapper.Utils.csproj"/>
         <ProjectReference Include="..\Common.Data.SqlClient\Common.Data.SqlClient.csproj"/>
-        <ProjectReference Include="..\Common.HtmlParsingTools\Common.HtmlParsingTools.csproj"/>
+        <ProjectReference Include="..\Common.HtmlParsingUtils\Common.HtmlParsingUtils.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

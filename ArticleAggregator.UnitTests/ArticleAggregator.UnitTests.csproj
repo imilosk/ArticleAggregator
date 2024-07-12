@@ -26,7 +26,7 @@
     <ItemGroup>
         <ProjectReference Include="..\ArticleAggregator.Core\ArticleAggregator.Core.csproj"/>
         <ProjectReference Include="..\ArticleAggregator.Settings\ArticleAggregator.Settings.csproj"/>
-        <ProjectReference Include="..\Common.HtmlParsingTools\Common.HtmlParsingTools.csproj"/>
+        <ProjectReference Include="..\Common.HtmlParsingUtils\Common.HtmlParsingUtils.csproj"/>
     </ItemGroup>
 
 </Project>

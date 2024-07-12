@@ -3,7 +3,7 @@ using System.Xml.XPath;
 using Common.BaseTypeExtensions;
 using HtmlAgilityPack;
 
-namespace Common.HtmlParsingTools;
+namespace Common.HtmlParsingUtils;
 
 public class HtmlLoop
 {

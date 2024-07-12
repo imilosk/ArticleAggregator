@@ -4,7 +4,7 @@ using ArticleAggregator.Constants;
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
-using Common.HtmlParsingTools;
+using Common.HtmlParsingUtils;
 using Microsoft.Extensions.Logging;
 
 namespace ArticleAggregator.Core.Parsers.Implementations;
