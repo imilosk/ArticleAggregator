@@ -46,8 +46,8 @@ public static class ServiceCollectionExtensions
             .AddScoped<IArticleRepository, ArticleRepository>()
             ;
 
-        SqlMapper.AddTypeHandler(new SqlUriTypeHandler());
         SqlMapper.RemoveTypeMap(typeof(Uri));
+        SqlMapper.AddTypeHandler(new SqlUriTypeHandler());
 
         return serviceCollection;
     }

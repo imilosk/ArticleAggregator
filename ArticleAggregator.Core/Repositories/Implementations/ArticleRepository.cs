@@ -128,6 +128,6 @@ public class ArticleRepository : IArticleRepository
         var columnsString = string.Join(",", columns);
         var parametersString = string.Join(", ", columns.Select(c => "@" + c));
 
-        return $"INSERT OR IGNORE INTO {ArticleSchema.TableName} ({columnsString}) VALUES ({parametersString})";
+        return $"INSERT INTO {ArticleSchema.TableName} ({columnsString}) VALUES ({parametersString})";
     }
 }

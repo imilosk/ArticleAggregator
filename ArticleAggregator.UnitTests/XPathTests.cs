@@ -24,7 +24,7 @@ public class XPathTests
     {
         var config = new XPathConfig
         {
-            BaseUrl = "https://webdevbev.co.uk/blog.html",
+            BaseUrl = new Uri("https://webdevbev.co.uk/blog.html"),
             ArticleXPath = "//*[contains(@class, 'blog__post-preview')]",
             TitleXPath = "descendant::h2//a/text()",
             SummaryXPath = "descendant::p[3]/text()",

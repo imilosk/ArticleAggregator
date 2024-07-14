@@ -9,7 +9,7 @@ public class ScrapingSettings
 
 public class XPathConfig
 {
-    [Required] public string BaseUrl { get; init; } = string.Empty;
+    [Required] public required Uri BaseUrl { get; init; }
     [Required] public string ArticleXPath { get; init; } = string.Empty;
     [Required] public string TitleXPath { get; init; } = string.Empty;
     [Required] public string SummaryXPath { get; init; } = string.Empty;

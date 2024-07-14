@@ -1,25 +1,24 @@
 ﻿using System.Globalization;
 using System.Xml.XPath;
-using Common.BaseTypeExtensions;
 using HtmlAgilityPack;
 
-namespace Common.HtmlParsingUtils;
+namespace Common.WebParsingUtils;
 
 public class HtmlLoop
 {
     private readonly HtmlWeb _htmlWeb = new();
 
     public void Parse(
-        string url,
+        Uri baseUrl,
         string mainElementXPath,
         string nextPageXPath,
         CultureInfo cultureInfo,
         Action<XPathNavigator> delegateAction
     )
     {
-        var currentPage = url;
+        var currentPage = baseUrl;
 
-        while (!currentPage.IsNullOrEmpty())
+        do
         {
             var htmlDocument = _htmlWeb.Load(currentPage);
             var rootNode = htmlDocument.DocumentNode ?? throw new Exception("Root element is null");
@@ -31,22 +30,19 @@ public class HtmlLoop
                 break;
             }
 
-            currentPage = GetNextPageUrl(rootNode, nextPageXPath, cultureInfo);
-        }
+            currentPage = GetNextPageUrl(rootNode, baseUrl, nextPageXPath, cultureInfo);
+        } while (currentPage != baseUrl);
     }
 
-    private static string? GetNextPageUrl(HtmlNode root, string nextPageXPath, CultureInfo cultureInfo)
+    private static Uri GetNextPageUrl(HtmlNode root, Uri baseUrl, string nextPageXPath, CultureInfo cultureInfo)
     {
-        var navigator = root.CreateNavigator();
+        var navigator = root.CreateNavigator() ?? throw new Exception("Cannot create navigator");
+        var nextPageUrl = navigator.GetValueOrDefault(nextPageXPath, string.Empty, cultureInfo);
 
-        return navigator?.GetValueOrDefault(nextPageXPath, string.Empty, cultureInfo);
+        return UriConverter.ConvertToAbsoluteUrl(baseUrl, nextPageUrl);
     }
 
-    private static int ScrapePage(
-        HtmlNode root,
-        string mainElementXPath,
-        Action<XPathNavigator> delegateAction
-    )
+    private static int ScrapePage(HtmlNode root, string mainElementXPath, Action<XPathNavigator> delegateAction)
     {
         var nodes = root.SelectNodes(mainElementXPath) ?? throw new Exception("No nodes found");
 

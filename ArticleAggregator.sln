@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.BaseTypeExtensions",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.DataIngest", "ArticleAggregator.DataIngest\ArticleAggregator.DataIngest.csproj", "{8B5820A2-B8B5-4F52-9961-0E381C633E65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.HtmlParsingUtils", "Common.HtmlParsingUtils\Common.HtmlParsingUtils.csproj", "{B197B626-8619-444D-8579-FC62D59C2A76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.WebParsingUtils", "Common.WebParsingUtils\Common.WebParsingUtils.csproj", "{B197B626-8619-444D-8579-FC62D59C2A76}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Core", "ArticleAggregator.Core\ArticleAggregator.Core.csproj", "{8471AAA0-4254-4288-A9C3-A8614C44B932}"
 EndProject

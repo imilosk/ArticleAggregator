@@ -8,7 +8,7 @@ public record Article
     public string Title { get; init; } = string.Empty;
     public string Summary { get; init; } = string.Empty;
     public string Author { get; init; } = string.Empty;
-    public required Uri Link;
+    public required Uri Link { get; init; }
     public DateTime PublishDate { get; init; }
     public DateTime LastUpdatedTime { get; init; }
     public string Source { get; init; } = string.Empty;

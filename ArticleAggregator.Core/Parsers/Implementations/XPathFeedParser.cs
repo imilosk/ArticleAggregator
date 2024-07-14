@@ -4,7 +4,7 @@ using ArticleAggregator.Constants;
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
-using Common.HtmlParsingUtils;
+using Common.WebParsingUtils;
 using Microsoft.Extensions.Logging;
 
 namespace ArticleAggregator.Core.Parsers.Implementations;
@@ -45,7 +45,10 @@ public class XPathFeedParser : IXPathFeedParser
             Title = navigator.GetValueOrDefault(config.TitleXPath, string.Empty, DefaultCultureInfo),
             Summary = navigator.GetValueOrDefault(config.SummaryXPath, string.Empty, DefaultCultureInfo),
             Author = navigator.GetValueOrDefault(config.AuthorXPath, string.Empty, DefaultCultureInfo),
-            Link = new Uri(navigator.GetValueOrDefault(config.LinkXPath, string.Empty, DefaultCultureInfo)),
+            Link = UriConverter.ConvertToAbsoluteUrl(
+                config.BaseUrl,
+                navigator.GetValueOrDefault(config.LinkXPath, string.Empty, DefaultCultureInfo)
+            ),
             PublishDate =
                 navigator.GetValueOrDefault(config.PublishDateXPath, DateTime.MinValue, DefaultCultureInfo),
             LastUpdatedTime =
