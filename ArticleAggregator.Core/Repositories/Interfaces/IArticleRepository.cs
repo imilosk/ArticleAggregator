@@ -13,5 +13,5 @@ public interface IArticleRepository
     Task<int> Create(Article article, IDbTransaction? transaction = null);
     Task<int> Update(Article article, IDbTransaction? transaction = null);
     Task<int> Delete(long articleId);
-    Task<int> UpsertMany(IList<Article> articles);
+    Task<int> UpsertMany(IEnumerable<Article> articles);
 }

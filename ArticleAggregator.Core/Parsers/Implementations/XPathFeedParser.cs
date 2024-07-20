@@ -12,33 +12,29 @@ namespace ArticleAggregator.Core.Parsers.Implementations;
 public class XPathFeedParser : IXPathFeedParser
 {
     private readonly ILogger<XPathFeedParser> _logger;
-    private readonly HtmlLoop _htmlLoop;
+    private readonly HtmlLoop<Article> _htmlLoop;
     private static readonly CultureInfo DefaultCultureInfo = CultureInfo.InvariantCulture;
 
     public XPathFeedParser(ILogger<XPathFeedParser> logger)
     {
         _logger = logger;
-        _htmlLoop = new HtmlLoop();
+        _htmlLoop = new HtmlLoop<Article>();
     }
 
-    public IList<Article> ParseFromWeb(XPathConfig config)
+    public IEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config)
     {
-        var items = new List<Article>();
-
-        _htmlLoop.Parse(
+        var pages = _htmlLoop.Parse(
             config.BaseUrl,
             config.ArticleXPath,
             config.NextPageXPath,
             DefaultCultureInfo,
-            DelegateAction
+            navigator => ParseArticle(navigator, config)
         );
 
-        return items;
-
-        void DelegateAction(XPathNavigator navigator) => ParseArticle(navigator, config, items);
+        return pages;
     }
 
-    private void ParseArticle(XPathNavigator navigator, XPathConfig config, List<Article> items)
+    private Article ParseArticle(XPathNavigator navigator, XPathConfig config)
     {
         var article = new Article
         {
@@ -56,8 +52,8 @@ public class XPathFeedParser : IXPathFeedParser
             Source = ArticleSource.XPath,
         };
 
-        items.Add(article);
-
         _logger.LogInformation("Parsed element with title: {title}", article.Title);
+
+        return article;
     }
 }

@@ -39,9 +39,12 @@ public class DataIngestService : IDataIngestService
 
         foreach (var config in _scrapingSettings.XPathConfigs)
         {
-            var items = _xPathFeedParser.ParseFromWeb(config);
+            var pages = _xPathFeedParser.ParseFromWeb(config);
 
-            await _articleRepository.UpsertMany(items);
+            foreach (var articles in pages)
+            {
+                await _articleRepository.UpsertMany(articles);
+            }
         }
     }
 }

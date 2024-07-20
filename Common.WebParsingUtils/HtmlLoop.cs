@@ -4,16 +4,16 @@ using HtmlAgilityPack;
 
 namespace Common.WebParsingUtils;
 
-public class HtmlLoop
+public class HtmlLoop<T>
 {
     private readonly HtmlWeb _htmlWeb = new();
 
-    public void Parse(
+    public IEnumerable<IEnumerable<T>> Parse(
         Uri baseUrl,
         string mainElementXPath,
         string nextPageXPath,
         CultureInfo cultureInfo,
-        Action<XPathNavigator> delegateAction
+        Func<XPathNavigator, T> delegateAction
     )
     {
         var currentPage = baseUrl;
@@ -23,12 +23,9 @@ public class HtmlLoop
             var htmlDocument = _htmlWeb.Load(currentPage);
             var rootNode = htmlDocument.DocumentNode ?? throw new Exception("Root element is null");
 
-            var itemsAddedCount = ScrapePage(rootNode, mainElementXPath, delegateAction);
+            var items = ScrapePage(rootNode, mainElementXPath, delegateAction);
 
-            if (itemsAddedCount == 0)
-            {
-                break;
-            }
+            yield return items;
 
             currentPage = GetNextPageUrl(rootNode, baseUrl, nextPageXPath, cultureInfo);
         } while (currentPage != baseUrl);
@@ -42,16 +39,16 @@ public class HtmlLoop
         return UriConverter.ConvertToAbsoluteUrl(baseUrl, nextPageUrl);
     }
 
-    private static int ScrapePage(HtmlNode root, string mainElementXPath, Action<XPathNavigator> delegateAction)
+    private static IEnumerable<T> ScrapePage(HtmlNode root, string mainElementXPath,
+        Func<XPathNavigator, T> delegateAction)
     {
         var nodes = root.SelectNodes(mainElementXPath) ?? throw new Exception("No nodes found");
 
         foreach (var node in nodes)
         {
             var navigator = node.CreateNavigator() ?? throw new Exception("Node navigator is null");
-            delegateAction(navigator);
-        }
 
-        return nodes.Count;
+            yield return delegateAction(navigator);
+        }
     }
 }

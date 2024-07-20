@@ -95,18 +95,20 @@ public class ArticleRepository : IArticleRepository
             .DeleteAsync();
     }
 
-    public async Task<int> UpsertMany(IList<Article> articles)
+    public async Task<int> UpsertMany(IEnumerable<Article> articles)
     {
         using var transaction = _sqlTransactionManager.BeginTransaction(_queryFactory.Connection);
 
         var rowsAffected = 0;
 
-        if (articles.Count == 0)
+        var enumerable = articles.ToArray();
+
+        if (enumerable.Length == 0)
         {
             return rowsAffected;
         }
 
-        foreach (var article in articles)
+        foreach (var article in enumerable)
         {
             if (await Exists(article.Link))
             {
