@@ -12,13 +12,13 @@ namespace ArticleAggregator.Core.Parsers.Implementations;
 public class XPathFeedParser : IXPathFeedParser
 {
     private readonly ILogger<XPathFeedParser> _logger;
-    private readonly HtmlLoop<Article> _htmlLoop;
+    private readonly HtmlLoop _htmlLoop;
     private static readonly CultureInfo DefaultCultureInfo = CultureInfo.InvariantCulture;
 
     public XPathFeedParser(ILogger<XPathFeedParser> logger)
     {
         _logger = logger;
-        _htmlLoop = new HtmlLoop<Article>();
+        _htmlLoop = new HtmlLoop();
     }
 
     public IEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config)

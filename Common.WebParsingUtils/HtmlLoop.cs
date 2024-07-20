@@ -4,11 +4,11 @@ using HtmlAgilityPack;
 
 namespace Common.WebParsingUtils;
 
-public class HtmlLoop<T>
+public class HtmlLoop
 {
     private readonly HtmlWeb _htmlWeb = new();
 
-    public IEnumerable<IEnumerable<T>> Parse(
+    public IEnumerable<IEnumerable<T>> Parse<T>(
         Uri baseUrl,
         string mainElementXPath,
         string nextPageXPath,
@@ -39,7 +39,7 @@ public class HtmlLoop<T>
         return UriConverter.ConvertToAbsoluteUrl(baseUrl, nextPageUrl);
     }
 
-    private static IEnumerable<T> ScrapePage(HtmlNode root, string mainElementXPath,
+    private static IEnumerable<T> ScrapePage<T>(HtmlNode root, string mainElementXPath,
         Func<XPathNavigator, T> delegateAction)
     {
         var nodes = root.SelectNodes(mainElementXPath) ?? throw new Exception("No nodes found");
