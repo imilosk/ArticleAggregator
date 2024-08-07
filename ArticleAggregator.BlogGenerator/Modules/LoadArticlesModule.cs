@@ -1,4 +1,4 @@
-using ArticleAggregator.BlogGenerator.CustomExtensions;
+using ArticleAggregator.BlogGenerator.ClassExtensions;
 using ArticleAggregator.Core.DataModels;
 
 namespace ArticleAggregator.BlogGenerator.Modules;
@@ -34,7 +34,7 @@ public class LoadArticlesModule : IModule
 
     public Task<IEnumerable<IDocument>> ExecuteAsync(IExecutionContext executionContext)
     {
-        var documents = Articles.Select(article => article.ToIDocument(executionContext));
+        var documents = Articles.ToDocuments(executionContext);
 
         return Task.FromResult(documents);
     }
