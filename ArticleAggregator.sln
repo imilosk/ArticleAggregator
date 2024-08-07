@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Constants
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data.Dapper.Utils", "Common.Data.Dapper.Utils\Common.Data.Dapper.Utils.csproj", "{DE70D959-510B-4403-A3C7-D009F8587038}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.BlogGenerator", "ArticleAggregator.BlogGenerator\ArticleAggregator.BlogGenerator.csproj", "{A34B4566-68B2-4D0A-80A6-6890510A61D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,5 +85,9 @@ Global
 		{DE70D959-510B-4403-A3C7-D009F8587038}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE70D959-510B-4403-A3C7-D009F8587038}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE70D959-510B-4403-A3C7-D009F8587038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

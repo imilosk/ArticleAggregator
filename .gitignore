@@ -5,3 +5,8 @@ riderModule.iml
 /_ReSharper.Caches/
 .idea
 /.db
+cache/
+output/
+temp/
+wwwroot/
+.DS_Store
