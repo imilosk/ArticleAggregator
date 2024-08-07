@@ -34,12 +34,8 @@ public class LoadArticlesModule : IModule
 
     public Task<IEnumerable<IDocument>> ExecuteAsync(IExecutionContext executionContext)
     {
-        var documents = new List<IDocument>();
-        foreach (var article in Articles)
-        {
-            documents.Add(article.ToIDocument(executionContext));
-        }
+        var documents = Articles.Select(article => article.ToIDocument(executionContext));
 
-        return Task.FromResult<IEnumerable<IDocument>>(documents);
+        return Task.FromResult(documents);
     }
 }

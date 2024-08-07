@@ -16,5 +16,5 @@ return await Bootstrapper
     // .ConfigureServices(services =>
     //     services.SetupArticleAggregatorDependencyInject(configuration)
     // )
-    .AddPipeline<ArticlesPipeline>()
+    .AddPipeline<HomePipeline>()
     .RunAsync();
