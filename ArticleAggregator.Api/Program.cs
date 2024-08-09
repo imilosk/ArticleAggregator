@@ -11,7 +11,7 @@ var configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
 
-builder.Services.SetupArticleAggregatorDependencyInject(configuration);
+builder.Services.AddArticleAggregator(configuration);
 
 var app = builder.Build();
 

@@ -1,18 +1,26 @@
 @model HomeViewModel
 
+@{
+var previousPage = Model.PreviousPage + ".html";
+var nextPage = Model.NextPage + ".html";
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My page</title>
+    <title>My blog</title>
 </head>
 <body>
 <article>
     @RenderBody()
+
     @foreach(var article in @Model.Articles) {
     <h1>@article.Title</h1>
     }
+    <a href="@previousPage">Previous page</a>
+    <a href="@nextPage">Next page</a>
 </article>
 </body>
 </html>

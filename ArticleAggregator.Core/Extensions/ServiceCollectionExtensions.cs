@@ -17,7 +17,7 @@ namespace ArticleAggregator.Core.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection SetupArticleAggregatorDependencyInject(
+    public static IServiceCollection AddArticleAggregator(
         this IServiceCollection serviceCollection,
         IConfigurationRoot configuration
     )

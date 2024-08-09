@@ -1,6 +1,6 @@
 namespace ArticleAggregator.BlogGenerator.ClassExtensions;
 
-public static class DocumentExtensions
+public static class DocumentToObjectExtensions
 {
     public static T GetObject<T>(this IDocument document)
     {
@@ -12,7 +12,7 @@ public static class DocumentExtensions
         return items.Select(item => item.ToDocument(executionContext));
     }
 
-    public static IEnumerable<T> GetObjects<T>(this IEnumerable<IDocument> items, IExecutionContext executionContext)
+    public static IEnumerable<T> GetObjects<T>(this IEnumerable<IDocument> items)
     {
         return items.Select(item => item.GetObject<T>());
     }

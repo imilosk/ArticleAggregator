@@ -1,5 +1,8 @@
-﻿using ArticleAggregator.BlogGenerator.Pipelines;
+﻿using ArticleAggregator.BlogGenerator.Modules;
+using ArticleAggregator.BlogGenerator.Pipelines;
+using ArticleAggregator.Core.Extensions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 var environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
 var configuration = new ConfigurationBuilder()
@@ -13,8 +16,11 @@ return await Bootstrapper
     .Factory
     .CreateDefault(args)
     .AddHostingCommands()
-    // .ConfigureServices(services =>
-    //     services.SetupArticleAggregatorDependencyInject(configuration)
-    // )
+    .ConfigureServices(services =>
+    {
+        services
+            .AddArticleAggregator(configuration)
+            .AddScoped<LoadArticlesModule>();
+    })
     .AddPipeline<HomePipeline>()
     .RunAsync();

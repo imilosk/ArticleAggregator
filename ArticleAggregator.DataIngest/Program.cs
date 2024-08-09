@@ -14,7 +14,7 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 builder.Services
-    .SetupArticleAggregatorDependencyInject(configuration);
+    .AddArticleAggregator(configuration);
 
 builder.Services
     .AddScoped<IDataIngestService, DataIngestService>()
