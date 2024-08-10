@@ -41,6 +41,13 @@ public class ArticleRepository : IArticleRepository
             .FirstOrDefaultAsync<Article>();
     }
 
+    public async Task<IEnumerable<Article>> GetAll()
+    {
+        return await _queryFactory
+            .Query(ArticleSchema.TableName)
+            .GetAsync<Article>();
+    }
+
     public async Task<IEnumerable<Article>> GetMany(int page = 1, int pageSize = 100)
     {
         return await _queryFactory

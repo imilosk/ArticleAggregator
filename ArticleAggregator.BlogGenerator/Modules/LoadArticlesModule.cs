@@ -14,7 +14,7 @@ internal class LoadArticlesModule : IModule
 
     public async Task<IEnumerable<IDocument>> ExecuteAsync(IExecutionContext executionContext)
     {
-        var articles = await _articleRepository.GetMany(1, 20);
+        var articles = await _articleRepository.GetAll();
 
         return articles.ToDocuments(executionContext);
     }

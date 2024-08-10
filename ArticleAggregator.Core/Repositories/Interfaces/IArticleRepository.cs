@@ -7,6 +7,7 @@ public interface IArticleRepository
 {
     Task<Article?> Get(long articleId);
     Task<Article?> Get(Uri link);
+    Task<IEnumerable<Article>> GetAll();
     Task<IEnumerable<Article>> GetMany(int page, int pageSize);
     Task<bool> Exists(long articleId);
     Task<bool> Exists(Uri uri);

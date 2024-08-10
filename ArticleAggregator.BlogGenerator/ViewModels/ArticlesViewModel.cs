@@ -2,7 +2,7 @@ using ArticleAggregator.Core.DataModels;
 
 namespace ArticleAggregator.BlogGenerator.ViewModels;
 
-internal class ArticlesViewModel
+public class ArticlesViewModel
 {
     public IEnumerable<Article> Articles { get; init; } = [];
     public int CurrentPage { get; init; }

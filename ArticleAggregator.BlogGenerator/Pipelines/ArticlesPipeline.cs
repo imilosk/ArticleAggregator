@@ -21,7 +21,7 @@ internal class ArticlesPipeline : Pipeline
             new PaginateDocuments(ArticlesPerPage),
             new ArticlePaginationModule(),
             new RenderRazor()
-                .WithLayout(new NormalizedPath("Articles.cshtml"))
+                .WithLayout(new NormalizedPath("Index.cshtml"))
                 .WithModel(Config.FromDocument((document, _) => document.GetObject<ArticlesViewModel>())),
             new SetDestination(Config.FromDocument((document, _) =>
             {

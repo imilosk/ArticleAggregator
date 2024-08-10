@@ -42,7 +42,12 @@ public class HtmlLoop
     private static IEnumerable<T> ScrapePage<T>(HtmlNode root, string mainElementXPath,
         Func<XPathNavigator, T> delegateAction)
     {
-        var nodes = root.SelectNodes(mainElementXPath) ?? throw new Exception("No nodes found");
+        var nodes = root.SelectNodes(mainElementXPath);
+
+        if (nodes is null)
+        {
+            yield break;
+        }
 
         foreach (var node in nodes)
         {
