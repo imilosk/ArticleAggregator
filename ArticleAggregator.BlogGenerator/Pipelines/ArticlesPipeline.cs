@@ -28,12 +28,12 @@ internal class ArticlesPipeline : Pipeline
                 var model = document.GetObject<ArticlesViewModel>();
 
                 return new NormalizedPath($"{model.CurrentPageUri}");
-            }))
+            })),
         ];
 
         OutputModules =
         [
-            new WriteFiles()
+            new WriteFiles(),
         ];
     }
 }
