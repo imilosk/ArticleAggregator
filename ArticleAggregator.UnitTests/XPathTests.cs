@@ -37,6 +37,9 @@ public class XPathTests
 
         var result = _xPathFeedParser.ParseFromWeb(config);
 
-        Assert.IsType<List<Article>>(result);
+        foreach (var articles in result)
+        {
+            Assert.IsAssignableFrom<IEnumerable<Article>>(articles);
+        }
     }
 }

@@ -35,7 +35,7 @@
         <None Update="secrets.Production.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="input\Home.cshtml">
+        <None Update="input\Articles.cshtml">
             <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </None>
         <None Update="input\_ViewImports.cshtml">

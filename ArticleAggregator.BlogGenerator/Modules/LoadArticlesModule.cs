@@ -3,7 +3,7 @@ using ArticleAggregator.Core.Repositories.Interfaces;
 
 namespace ArticleAggregator.BlogGenerator.Modules;
 
-public class LoadArticlesModule : IModule
+internal class LoadArticlesModule : IModule
 {
     private readonly IArticleRepository _articleRepository;
 

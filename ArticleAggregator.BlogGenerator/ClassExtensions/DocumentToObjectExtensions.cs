@@ -1,6 +1,6 @@
 namespace ArticleAggregator.BlogGenerator.ClassExtensions;
 
-public static class DocumentToObjectExtensions
+internal static class DocumentToObjectExtensions
 {
     public static T GetObject<T>(this IDocument document)
     {

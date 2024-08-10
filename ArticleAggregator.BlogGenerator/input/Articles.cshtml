@@ -1,9 +1,4 @@
-@model HomeViewModel
-
-@{
-var previousPage = Model.PreviousPage + ".html";
-var nextPage = Model.NextPage + ".html";
-}
+@model ArticlesViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +14,14 @@ var nextPage = Model.NextPage + ".html";
     @foreach(var article in @Model.Articles) {
     <h1>@article.Title</h1>
     }
-    <a href="@previousPage">Previous page</a>
-    <a href="@nextPage">Next page</a>
+
+    @if(Model.PreviousPageUri != string.Empty) {
+    <a href="@Model.PreviousPageUri">Previous page</a>
+    }
+
+    @if(Model.NextPageUri != string.Empty) {
+    <a href="@Model.NextPageUri">Next page</a>
+    }
 </article>
 </body>
 </html>

@@ -22,5 +22,5 @@ return await Bootstrapper
             .AddArticleAggregator(configuration)
             .AddScoped<LoadArticlesModule>();
     })
-    .AddPipeline<HomePipeline>()
+    .AddPipeline<ArticlesPipeline>()
     .RunAsync();
