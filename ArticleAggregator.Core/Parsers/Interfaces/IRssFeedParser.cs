@@ -5,6 +5,6 @@ namespace ArticleAggregator.Core.Parsers.Interfaces;
 
 public interface IRssFeedParser
 {
-    List<Article> Parse(string url);
-    List<Article> Parse(XmlReader xmlReader);
+    List<Article> Parse(string url, string fallbackAuthor);
+    List<Article> Parse(XmlReader xmlReader, string fallbackAuthor);
 }

@@ -10,4 +10,5 @@ public class RssFeedSettings
 public class RssFeedConfig
 {
     [Required] public string BaseUrl { get; init; } = string.Empty;
+    [Required] public string FallbackAuthor { get; init; } = string.Empty;
 }

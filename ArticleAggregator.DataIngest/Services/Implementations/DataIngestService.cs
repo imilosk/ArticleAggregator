@@ -32,7 +32,7 @@ public class DataIngestService : IDataIngestService
     {
         foreach (var config in _rssFeedSettings.FeedConfigs)
         {
-            var items = _rssFeedParser.Parse(config.BaseUrl);
+            var items = _rssFeedParser.Parse(config.BaseUrl, config.FallbackAuthor);
 
             await _articleRepository.UpsertMany(items);
         }

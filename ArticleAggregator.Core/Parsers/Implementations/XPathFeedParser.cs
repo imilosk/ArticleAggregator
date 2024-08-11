@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Xml.XPath;
 using ArticleAggregator.Constants;
 using ArticleAggregator.Core.DataModels;
+using ArticleAggregator.Core.Extensions;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
 using Common.WebParsingUtils;
@@ -9,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ArticleAggregator.Core.Parsers.Implementations;
 
-public class XPathFeedParser : IXPathFeedParser
+public partial class XPathFeedParser : IXPathFeedParser
 {
     private readonly ILogger<XPathFeedParser> _logger;
     private readonly HtmlLoop _htmlLoop;
@@ -38,8 +39,14 @@ public class XPathFeedParser : IXPathFeedParser
     {
         var article = new Article
         {
-            Title = navigator.GetValueOrDefault(config.TitleXPath, string.Empty, DefaultCultureInfo),
-            Summary = navigator.GetValueOrDefault(config.SummaryXPath, string.Empty, DefaultCultureInfo),
+            Title =
+                navigator
+                    .GetValueOrDefault(config.TitleXPath, string.Empty, DefaultCultureInfo)
+                    .HtmlDecode().Trim(),
+            Summary = StripHtml.StripHtmlTagsRegex().Replace(
+                    navigator.GetValueOrDefault(config.SummaryXPath, string.Empty, DefaultCultureInfo),
+                    string.Empty)
+                .HtmlDecode().Trim(),
             Author = navigator.GetValueOrDefault(config.AuthorXPath, string.Empty, DefaultCultureInfo),
             Link = UriConverter.ConvertToAbsoluteUrl(
                 config.BaseUrl,
