@@ -7,7 +7,7 @@ namespace ArticleAggregator.BlogGenerator.Pipelines;
 
 internal class ArticlesPipeline : Pipeline
 {
-    private const int ArticlesPerPage = 20;
+    private const int ArticlesPerPage = 10;
 
     public ArticlesPipeline(LoadArticlesModule loadArticlesModule)
     {

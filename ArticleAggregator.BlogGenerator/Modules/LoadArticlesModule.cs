@@ -16,6 +16,8 @@ internal class LoadArticlesModule : IModule
     {
         var articles = await _articleRepository.GetAll();
 
-        return articles.ToDocuments(executionContext);
+        return articles
+            .OrderByDescending(x => x.PublishDate)
+            .ToDocuments(executionContext);
     }
 }
