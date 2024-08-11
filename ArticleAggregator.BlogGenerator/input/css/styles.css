@@ -26,6 +26,11 @@
     }
 }
 
+.bg-bgColor {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--theme-bg) / var(--tw-bg-opacity));
+}
+
 .italic {
     font-style: italic
 }
