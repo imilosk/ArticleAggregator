@@ -23,7 +23,7 @@ public class RssFeedTests
     [Fact]
     public void ParseRssFeed_LocalDiskParse_ReturnsValueTuple()
     {
-        var result = _rssFeedParser.Parse(ExampleFilePath);
+        var result = _rssFeedParser.Parse(ExampleFilePath, string.Empty);
 
         Assert.IsType<List<Article>>(result);
     }
@@ -31,7 +31,7 @@ public class RssFeedTests
     [Fact]
     public void ParseRssFeed_UrlParse_ReturnsValueTuple()
     {
-        var result = _rssFeedParser.Parse(ExampleUrl);
+        var result = _rssFeedParser.Parse(ExampleUrl, string.Empty);
 
         Assert.IsType<List<Article>>(result);
     }
