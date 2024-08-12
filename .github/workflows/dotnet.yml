@@ -16,6 +16,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      DOTNET_ENVIRONMENT: Production
+
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -26,5 +29,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
+    - name: Generate HTML
       run: dotnet run --project ArticleAggregator.BlogGenerator
