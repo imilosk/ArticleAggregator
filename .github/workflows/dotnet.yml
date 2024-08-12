@@ -24,7 +24,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       if: github.ref == 'refs/heads/main'
       with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         external_repository: imilosk/relatively-general-dotnet
         publish_branch: main
         publish_dir: ./public
