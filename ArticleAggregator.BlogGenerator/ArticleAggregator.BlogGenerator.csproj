@@ -35,26 +35,6 @@
         <None Update="secrets.Production.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="input\Articles.cshtml">
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        </None>
-        <None Update="input\_ViewImports.cshtml">
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        </None>
-        <None Include="output\favicon.ico">
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        </None>
-        <None Include="output\images\giphy.gif">
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Include="input\css\styles.css.cs"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="output\css\"/>
     </ItemGroup>
 
 </Project>
