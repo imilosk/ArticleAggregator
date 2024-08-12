@@ -29,5 +29,18 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Migrate database
+      run: dotnet run --project ArticleAggregator.DbMigrations
     - name: Generate HTML
       run: dotnet run --project ArticleAggregator.BlogGenerator
+    - name: Commit and Push changes
+      run: |
+        cd ArticleAggregator.BlogGenerator/output
+        git init
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "chore: Generate and commit static site HTML files"
+        git push -u https://<GITHUB_TOKEN>@github.com/imilosk/relatively-general-dotnet.git HEAD:main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
