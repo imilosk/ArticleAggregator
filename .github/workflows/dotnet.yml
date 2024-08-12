@@ -42,7 +42,6 @@ jobs:
         npx tailwindcss -i ./css/styles.css -o ../output/css/styles.css --minify
     - name: Copy assets
       run: |
-        cp -r ./ArticleAggregator.BlogGenerator/input/css/ ./ArticleAggregator.BlogGenerator/output
         cp -r ./ArticleAggregator.BlogGenerator/input/images/ ./ArticleAggregator.BlogGenerator/output
         cp ./ArticleAggregator.BlogGenerator/input/favicon.ico ./ArticleAggregator.BlogGenerator/output
     - name: Deploy
