@@ -48,4 +48,3 @@ jobs:
         external_repository: imilosk/relatively-general-dotnet
         publish_branch: main
         publish_dir: ./ArticleAggregator.BlogGenerator/output
-        keep_files: true
