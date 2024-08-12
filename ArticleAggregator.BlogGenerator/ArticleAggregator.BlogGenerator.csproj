@@ -35,6 +35,7 @@
         <None Update="secrets.Production.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        x§
     </ItemGroup>
 
 </Project>
