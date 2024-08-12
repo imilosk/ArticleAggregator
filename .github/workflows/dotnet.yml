@@ -37,8 +37,8 @@ jobs:
       run: dotnet run --project ArticleAggregator.BlogGenerator
     - name: Copy assets
       run: |
-        cp ./ArticleAggregator.BlogGenerator/input/css/ ./ArticleAggregator.BlogGenerator/output
-        cp ./ArticleAggregator.BlogGenerator/input/img/ ./ArticleAggregator.BlogGenerator/output
+        cp -r ./ArticleAggregator.BlogGenerator/input/css/ ./ArticleAggregator.BlogGenerator/output
+        cp -r ./ArticleAggregator.BlogGenerator/input/img/ ./ArticleAggregator.BlogGenerator/output
         cp ./ArticleAggregator.BlogGenerator/input/favicon.ico ./ArticleAggregator.BlogGenerator/output
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
