@@ -20,6 +20,26 @@ jobs:
       DOTNET_ENVIRONMENT: Production
 
     steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Migrate database
+      run: dotnet run --project ArticleAggregator.DbMigrations
+    # - name: Scrape blogs
+    #   run: dotnet run --project ArticleAggregator.DataIngest
+    - name: Generate HTML
+      run: dotnet run --project ArticleAggregator.BlogGenerator
+    - name: Copy assets
+      run: |
+        cp ./ArticleAggregator.BlogGenerator/input/css/ ./ArticleAggregator.BlogGenerator/output
+        cp ./ArticleAggregator.BlogGenerator/input/img/ ./ArticleAggregator.BlogGenerator/output
+        cp ./ArticleAggregator.BlogGenerator/input/favicon.ico ./ArticleAggregator.BlogGenerator/output
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
       if: github.ref == 'refs/heads/main'
@@ -27,4 +47,4 @@ jobs:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         external_repository: imilosk/relatively-general-dotnet
         publish_branch: main
-        publish_dir: ./public
+        publish_dir: ./ArticleAggregator.BlogGenerator/output
