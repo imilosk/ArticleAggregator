@@ -16,9 +16,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-      DOTNET_ENVIRONMENT: Production
-
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -32,6 +29,8 @@ jobs:
     - name: Migrate database
       run: dotnet run --project ArticleAggregator.DbMigrations
     - name: Scrape blogs
+      env:
+        DOTNET_ENVIRONMENT: Production
       run: dotnet run --project ArticleAggregator.DataIngest
     - name: Generate HTML
       run: dotnet run --project ArticleAggregator.BlogGenerator
