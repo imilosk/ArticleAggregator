@@ -40,7 +40,6 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git config --unset-all http.https://github.com/.extraheader
-        git checkout main
         git add .
         git commit -m "chore: Generate and commit static site HTML files"
-        git push -u https://github.com/imilosk/relatively-general-dotnet.git
+        git push -u https://github.com/imilosk/relatively-general-dotnet.git HEAD:main
