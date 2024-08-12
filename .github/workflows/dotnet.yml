@@ -35,6 +35,11 @@ jobs:
       run: dotnet run --project ArticleAggregator.DataIngest
     - name: Generate HTML
       run: dotnet run --project ArticleAggregator.BlogGenerator
+    - name: Build css
+      run: |
+        cd ArticleAggregator.BlogGenerator/input
+        npm install
+        npx tailwindcss -i ./css/styles.css -o ../output/css/styles.css --minify
     - name: Copy assets
       run: |
         cp -r ./ArticleAggregator.BlogGenerator/input/css/ ./ArticleAggregator.BlogGenerator/output
