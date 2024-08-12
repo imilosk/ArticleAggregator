@@ -31,8 +31,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Migrate database
       run: dotnet run --project ArticleAggregator.DbMigrations
-    # - name: Scrape blogs
-    #   run: dotnet run --project ArticleAggregator.DataIngest
+    - name: Scrape blogs
+      run: dotnet run --project ArticleAggregator.DataIngest
     - name: Generate HTML
       run: dotnet run --project ArticleAggregator.BlogGenerator
     - name: Copy assets
