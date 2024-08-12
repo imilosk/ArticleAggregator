@@ -22,13 +22,7 @@ jobs:
     steps:
     - name: Commit and Push changes
       run: |
-        git init
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git config --global init.defaultBranch main
-        git config --unset-all http.https://github.com/.extraheader
-        git remote add https://github.com/imilosk/relatively-general-dotnet.git
-        git checkout main
-        git add .
-        git commit -m "chore: Generate and commit static site HTML files"
-        git push origin main
+        git config user.name "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/imilosk/relatively-general-dotnet.git"
+        git push --force origin main
