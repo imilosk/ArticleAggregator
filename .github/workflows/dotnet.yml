@@ -33,7 +33,7 @@ jobs:
         dotnet run --environment Production --project ArticleAggregator.DbMigrations
     - name: Scrape blogs
       run: |
-        dotnet run --environment Production --project ArticleAggregator.DataIngest 
+        dotnet run --environment Development --project ArticleAggregator.DataIngest 
     - name: Generate HTML
       run: |
         echo "$DOTNET_ENVIRONMENT"
@@ -56,3 +56,4 @@ jobs:
         external_repository: imilosk/relatively-general-dotnet
         publish_branch: main
         publish_dir: ./ArticleAggregator.BlogGenerator/output
+        destination_dir: site/
