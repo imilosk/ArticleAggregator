@@ -30,13 +30,13 @@ jobs:
       run: dotnet build --no-restore
     - name: Migrate database
       run: |
-        dotnet run --environment Production --project ArticleAggregator.DbMigrations
+        dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
     - name: Scrape blogs
       run: |
-        dotnet run --environment Development --project ArticleAggregator.DataIngest 
+        dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest 
     - name: Generate HTML
       run: |
-        dotnet run --environment Production --project ArticleAggregator.BlogGenerator
+        dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.BlogGenerator
     - name: Build CSS
       run: |
         cd ArticleAggregator.BlogGenerator/input
