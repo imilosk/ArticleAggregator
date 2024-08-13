@@ -30,15 +30,15 @@ jobs:
       run: dotnet build --no-restore
     - name: Migrate database
       run: |
-        echo: "$DOTNET_ENVIRONMENT"
+        echo "$DOTNET_ENVIRONMENT"
         dotnet run --project ArticleAggregator.DbMigrations
     - name: Scrape blogs
       run: |
-        echo: "$DOTNET_ENVIRONMENT"
+        echo "$DOTNET_ENVIRONMENT"
         dotnet run --project ArticleAggregator.DataIngest
     - name: Generate HTML
       run: |
-        echo: "$DOTNET_ENVIRONMENT"
+        echo "$DOTNET_ENVIRONMENT"
         dotnet run --project ArticleAggregator.BlogGenerator
     - name: Build CSS
       run: |
