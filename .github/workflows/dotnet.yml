@@ -29,14 +29,17 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Migrate database
-      echo: "$DOTNET_ENVIRONMENT"
-      run: dotnet run --project ArticleAggregator.DbMigrations
+      run: |
+        echo: "$DOTNET_ENVIRONMENT"
+        dotnet run --project ArticleAggregator.DbMigrations
     - name: Scrape blogs
-      echo: "$DOTNET_ENVIRONMENT"
-      run: dotnet run --project ArticleAggregator.DataIngest
+      run: |
+        echo: "$DOTNET_ENVIRONMENT"
+        dotnet run --project ArticleAggregator.DataIngest
     - name: Generate HTML
-      echo: "$DOTNET_ENVIRONMENT"
-      run: dotnet run --project ArticleAggregator.BlogGenerator
+      run: |
+        echo: "$DOTNET_ENVIRONMENT"
+        dotnet run --project ArticleAggregator.BlogGenerator
     - name: Build CSS
       run: |
         cd ArticleAggregator.BlogGenerator/input
