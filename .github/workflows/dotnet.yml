@@ -36,8 +36,6 @@ jobs:
         dotnet run --environment Development --project ArticleAggregator.DataIngest 
     - name: Generate HTML
       run: |
-        echo "$DOTNET_ENVIRONMENT"
-        export DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT"
         dotnet run --environment Production --project ArticleAggregator.BlogGenerator
     - name: Build CSS
       run: |
