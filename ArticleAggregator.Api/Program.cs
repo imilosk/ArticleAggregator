@@ -33,6 +33,7 @@ app.MapGet("/api/articles",
             .AddFilter(FilterOperator.Offset, (page - 1) * pageSize)
             .AddFilter(FilterOperator.Limit, pageSize)
             .Build();
+
         var article = await articleRepository.GetAll(filterBuilder);
 
         return Results.Ok(article.MapToResponse());
