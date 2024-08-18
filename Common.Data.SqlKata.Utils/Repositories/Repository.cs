@@ -16,10 +16,10 @@ public abstract class Repository<T> : IRepository<T>
     protected Repository(string tableName, QueryFactory queryFactory)
     {
         _queryFactory = queryFactory;
+        _tableName = tableName;
 
         var columns = SqlDataMapper.GetColumnNames<T>();
         _insertSql = GenerateInsertStatement(tableName, columns);
-        _tableName = tableName;
     }
 
     public async Task<T?> Get(QueryFilter queryFilter, IDbTransaction? transaction = null)
