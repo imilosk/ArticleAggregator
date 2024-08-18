@@ -20,7 +20,7 @@ public static class XPathNavigatorExtensions
 
         var expressionValue = GetXpathExpressionValue(navigator, xpath);
 
-        if (expressionValue.IsNullOrEmpty())
+        if (expressionValue.IsNullOrWhiteSpace())
         {
             return defaultValue;
         }

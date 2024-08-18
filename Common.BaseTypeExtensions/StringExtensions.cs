@@ -6,4 +6,9 @@ public static class StringExtensions
     {
         return string.IsNullOrEmpty(input);
     }
+
+    public static bool IsNullOrWhiteSpace(this string? input)
+    {
+        return string.IsNullOrWhiteSpace(input);
+    }
 }

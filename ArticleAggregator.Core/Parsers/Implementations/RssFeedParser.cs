@@ -33,7 +33,7 @@ public class RssFeedParser : IRssFeedParser
         var items = new List<Article>();
         foreach (var item in feed.Items)
         {
-            if (item.Title.Text.IsNullOrEmpty())
+            if (item.Title.Text.IsNullOrWhiteSpace())
             {
                 _logger.LogWarning("Skipped one item because of empty title");
 
