@@ -1,5 +1,6 @@
 using ArticleAggregator.Core.Extensions;
-using ArticleAggregator.Core.Repositories.Interfaces;
+using ArticleAggregator.Core.Repositories.Implementations;
+using Common.Data.SqlKata.Utils.Filtering;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddArticleAggregator(configuration);
 var app = builder.Build();
 
 app.MapGet("/api/articles",
-    async (IArticleRepository articleRepository, int page = 1, int pageSize = 100) =>
+    async (ArticleRepository articleRepository, int page = 1, int pageSize = 100) =>
     {
         if (page < 1)
         {
@@ -28,7 +29,11 @@ app.MapGet("/api/articles",
             return Results.BadRequest("Page size must be between 1 and 1000.");
         }
 
-        var article = await articleRepository.GetMany(page, pageSize);
+        var filterBuilder = new ComparisonFilterBuilder()
+            .AddFilter(FilterOperator.Offset, (page - 1) * pageSize)
+            .AddFilter(FilterOperator.Limit, pageSize)
+            .Build();
+        var article = await articleRepository.GetAll(filterBuilder);
 
         return Results.Ok(article.MapToResponse());
     });

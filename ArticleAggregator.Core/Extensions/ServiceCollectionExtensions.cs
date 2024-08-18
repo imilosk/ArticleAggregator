@@ -1,7 +1,6 @@
 using ArticleAggregator.Core.Parsers.Implementations;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Core.Repositories.Implementations;
-using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.Settings;
 using Common.BaseTypeExtensions;
 using Common.Data.Dapper.Utils.Mappers;
@@ -43,7 +42,7 @@ public static class ServiceCollectionExtensions
             .AddScoped<ISqlTransactionManager, SqlTransactionManager>()
             .AddScoped<IRssFeedParser, RssFeedParser>()
             .AddScoped<IXPathFeedParser, XPathFeedParser>()
-            .AddScoped<IArticleRepository, ArticleRepository>()
+            .AddScoped<ArticleRepository>()
             ;
 
         SqlMapper.RemoveTypeMap(typeof(Uri));

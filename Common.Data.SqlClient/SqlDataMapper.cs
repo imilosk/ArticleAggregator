@@ -34,6 +34,24 @@ public static class SqlDataMapper
         return columnMapping.Select(mapping => mapping.FieldName).ToList();
     }
 
+    public static Dictionary<string, object?> GetAnonymousObject<T>(T entity)
+    {
+        var type = typeof(T);
+        var dict = new Dictionary<string, object?>();
+
+        foreach (var fieldInfo in type.GetProperties())
+        {
+            if (ShouldSkip(fieldInfo))
+            {
+                continue;
+            }
+
+            dict.Add(GetDatabaseFieldName(fieldInfo), fieldInfo.GetValue(entity));
+        }
+
+        return dict;
+    }
+
     private static bool ShouldSkip(PropertyInfo fieldInfo)
     {
         var notMappedAttribute = fieldInfo.GetCustomAttribute(typeof(NotMappedAttribute), false);
