@@ -24,7 +24,7 @@ app.MapGet("/api/articles",
             return Results.BadRequest("Page number must be greater than 0.");
         }
 
-        if (pageSize is < 1 or > 1000)
+        if (pageSize < 1)
         {
             return Results.BadRequest("Page size must be between 1 and 1000.");
         }
