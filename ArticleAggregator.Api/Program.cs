@@ -1,5 +1,5 @@
 using ArticleAggregator.Core.Extensions;
-using ArticleAggregator.Core.Repositories.Implementations;
+using ArticleAggregator.Core.Repositories.Interfaces;
 using Common.Data.SqlKata.Utils.Filtering;
 
 var builder = WebApplication.CreateSlimBuilder(args);
@@ -17,7 +17,7 @@ builder.Services.AddArticleAggregator(configuration);
 var app = builder.Build();
 
 app.MapGet("/api/articles",
-    async (ArticleRepository articleRepository, int page = 1, int pageSize = 100) =>
+    async (IArticleRepository articleRepository, int page = 1, int pageSize = 100) =>
     {
         if (page < 1)
         {

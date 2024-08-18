@@ -1,13 +1,13 @@
 using ArticleAggregator.BlogGenerator.ClassExtensions;
-using ArticleAggregator.Core.Repositories.Implementations;
+using ArticleAggregator.Core.Repositories.Interfaces;
 
 namespace ArticleAggregator.BlogGenerator.Modules;
 
 internal class LoadArticlesModule : IModule
 {
-    private readonly ArticleRepository _articleRepository;
+    private readonly IArticleRepository _articleRepository;
 
-    public LoadArticlesModule(ArticleRepository articleRepository)
+    public LoadArticlesModule(IArticleRepository articleRepository)
     {
         _articleRepository = articleRepository;
     }

@@ -1,5 +1,5 @@
 using ArticleAggregator.Core.Parsers.Interfaces;
-using ArticleAggregator.Core.Repositories.Implementations;
+using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.DataIngest.Services.Interfaces;
 using ArticleAggregator.Settings;
 
@@ -11,14 +11,14 @@ public class DataIngestService : IDataIngestService
     private readonly ScrapingSettings _scrapingSettings;
     private readonly IRssFeedParser _rssFeedParser;
     private readonly IXPathFeedParser _xPathFeedParser;
-    private readonly ArticleRepository _articleRepository;
+    private readonly IArticleRepository _articleRepository;
 
     public DataIngestService(
         RssFeedSettings rssFeedSettings,
         ScrapingSettings scrapingSettings,
         IRssFeedParser rssFeedParser,
         IXPathFeedParser xPathFeedParser,
-        ArticleRepository articleRepository
+        IArticleRepository articleRepository
     )
     {
         _rssFeedSettings = rssFeedSettings;
