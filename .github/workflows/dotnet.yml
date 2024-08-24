@@ -28,6 +28,12 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Download SQLite DB Artifact
+      continue-on-error: true
+      uses: actions/download-artifact@v3
+      with:
+        name: article-aggregator-db
+        path: /tmp/article_aggregator.db
     - name: Migrate database
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
@@ -55,3 +61,8 @@ jobs:
         publish_branch: main
         publish_dir: ./ArticleAggregator.BlogGenerator/output
         destination_dir: site/
+    - name: Upload SQLite DB Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: article-aggregator-db
+        path: /tmp/article_aggregator.db
