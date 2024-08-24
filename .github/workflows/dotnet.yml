@@ -30,9 +30,9 @@ jobs:
       run: dotnet build --no-restore
     - name: Download SQLite DB Artifact
       uses: dawidd6/action-download-artifact@v6
+      id: download-artifact
       with:
         name: article-aggregator-db
-        id: download-artifact
         path: /tmp/article_aggregator.db
         if_no_artifact_found: ignore
         workflow_search: true
