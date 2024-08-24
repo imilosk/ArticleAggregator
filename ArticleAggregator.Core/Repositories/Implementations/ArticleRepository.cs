@@ -22,17 +22,18 @@ public class ArticleRepository : Repository<Article>, IArticleRepository
         _sqlTransactionManager = sqlTransactionManager;
     }
 
-    public async Task<int> UpsertMany(IEnumerable<Article> articles)
+    public async Task<(int Inserted, int Updated)> UpsertMany(IEnumerable<Article> articles)
     {
         using var transaction = _sqlTransactionManager.BeginTransaction(_queryFactory.Connection);
 
-        var rowsAffected = 0;
+        var inserted = 0;
+        var updated = 0;
 
         var enumerable = articles.ToArray();
 
         if (enumerable.Length == 0)
         {
-            return rowsAffected;
+            return (inserted, updated);
         }
 
         var queryFilter = new QueryFilter();
@@ -44,16 +45,16 @@ public class ArticleRepository : Repository<Article>, IArticleRepository
 
             if (await Exists(queryFilter))
             {
-                rowsAffected += await Update(article, queryFilter, transaction);
+                updated += await Update(article, queryFilter, transaction);
             }
             else
             {
-                rowsAffected += await Create(article, transaction);
+                inserted += await Create(article, transaction);
             }
         }
 
         transaction?.Commit();
 
-        return rowsAffected;
+        return (inserted, updated);
     }
 }

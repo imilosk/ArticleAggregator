@@ -5,5 +5,5 @@ namespace ArticleAggregator.Core.Repositories.Interfaces;
 
 public interface IArticleRepository : IRepository<Article>
 {
-    Task<int> UpsertMany(IEnumerable<Article> articles);
+    Task<(int Inserted, int Updated)> UpsertMany(IEnumerable<Article> articles);
 }
