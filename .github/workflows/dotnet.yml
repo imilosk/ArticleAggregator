@@ -36,7 +36,6 @@ jobs:
         path: /tmp
         if_no_artifact_found: ignore
         workflow_search: true
-        workflow_conclusion: success
         github_token: ${{secrets.PERSONAL_TOKEN}}
     - name: Migrate database
       run: |
