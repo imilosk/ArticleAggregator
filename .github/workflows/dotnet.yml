@@ -30,7 +30,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Download SQLite DB Artifact
       continue-on-error: true
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: article-aggregator-db
         path: /tmp/article_aggregator.db
@@ -41,7 +41,7 @@ jobs:
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest 
     - name: Upload SQLite DB Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: article-aggregator-db
         path: /tmp/article_aggregator.db
