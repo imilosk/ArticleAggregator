@@ -40,6 +40,11 @@ jobs:
     - name: Scrape blogs
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest 
+    - name: Upload SQLite DB Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: article-aggregator-db
+        path: /tmp/article_aggregator.db
     - name: Generate HTML
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.BlogGenerator
@@ -61,8 +66,3 @@ jobs:
         publish_branch: main
         publish_dir: ./ArticleAggregator.BlogGenerator/output
         destination_dir: site/
-    - name: Upload SQLite DB Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: article-aggregator-db
-        path: /tmp/article_aggregator.db
