@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DOTNET_ENVIRONMENT: Production
+      DOTNET_ENVIRONMENT: Development
 
     steps:
     - uses: actions/checkout@v4
@@ -36,6 +36,7 @@ jobs:
         path: /tmp
         if_no_artifact_found: ignore
         workflow_search: true
+        workflow_conclusion: success
         github_token: ${{secrets.PERSONAL_TOKEN}}
     - name: Migrate database
       run: |
