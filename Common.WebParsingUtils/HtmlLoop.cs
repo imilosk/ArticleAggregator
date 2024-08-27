@@ -52,7 +52,7 @@ public class HtmlLoop
         }
 
         var page = await browser.NewPageAsync();
-        await page.GoToAsync(url.ToString());
+        await page.GoToAsync(url.ToString(), 120000);
 
         // TODO: Figure out something better
         await Task.Delay(1000);
