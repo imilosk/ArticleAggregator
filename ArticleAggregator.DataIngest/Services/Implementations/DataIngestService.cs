@@ -48,7 +48,7 @@ public class DataIngestService : IDataIngestService
         {
             var pages = _xPathFeedParser.ParseFromWeb(config);
 
-            foreach (var articles in pages)
+            await foreach (var articles in pages)
             {
                 if (await InsertDataIntoDb(articles))
                 {

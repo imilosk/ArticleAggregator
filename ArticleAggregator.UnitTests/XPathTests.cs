@@ -20,7 +20,7 @@ public class XPathTests
     }
 
     [Fact]
-    public void ParsePage_XPathParse_ReturnsValueTuple()
+    public async Task ParsePage_XPathParse_ReturnsValueTuple()
     {
         var config = new XPathConfig
         {
@@ -37,7 +37,7 @@ public class XPathTests
 
         var result = _xPathFeedParser.ParseFromWeb(config);
 
-        foreach (var articles in result)
+        await foreach (var articles in result)
         {
             Assert.IsAssignableFrom<IEnumerable<Article>>(articles);
         }

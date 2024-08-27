@@ -8,7 +8,7 @@ public class HtmlLoop
 {
     private readonly HtmlWeb _htmlWeb = new();
 
-    public IEnumerable<IEnumerable<T>> Parse<T>(
+    public async IAsyncEnumerable<IEnumerable<T>> Parse<T>(
         Uri baseUrl,
         string mainElementXPath,
         string nextPageXPath,
@@ -17,6 +17,8 @@ public class HtmlLoop
         Func<XPathNavigator, T> delegateAction
     )
     {
+        await Task.CompletedTask;
+        
         var currentPage = baseUrl;
         do
         {

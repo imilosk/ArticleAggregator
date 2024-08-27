@@ -5,5 +5,5 @@ namespace ArticleAggregator.Core.Parsers.Interfaces;
 
 public interface IXPathFeedParser
 {
-    IEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config);
+    IAsyncEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config);
 }

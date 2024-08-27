@@ -22,7 +22,7 @@ public class XPathFeedParser : IXPathFeedParser
         _htmlLoop = new HtmlLoop();
     }
 
-    public IEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config)
+    public IAsyncEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config)
     {
         var pages = _htmlLoop.Parse(
             config.BaseUrl,
