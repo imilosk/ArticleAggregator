@@ -36,6 +36,8 @@ public class DataIngestService : IDataIngestService
     {
         foreach (var config in _rssFeedSettings.FeedConfigs)
         {
+            _logger.LogInformation($"Scraping {config.BaseUrl}");
+            
             var articles = _rssFeedParser.Parse(config.BaseUrl, config.FallbackAuthor);
 
             if (await InsertDataIntoDb(articles))
@@ -46,6 +48,8 @@ public class DataIngestService : IDataIngestService
 
         foreach (var config in _scrapingSettings.XPathConfigs)
         {
+            _logger.LogInformation($"Scraping {config.BaseUrl}");
+            
             var pages = _xPathFeedParser.ParseFromWeb(config);
 
             await foreach (var articles in pages)
