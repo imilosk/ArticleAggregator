@@ -24,13 +24,21 @@ public class HtmlLoop
 
         do
         {
-            var htmlDocument = await LoadHtmlDocument(browser, currentPage, isJs);
-            var rootNode = htmlDocument.DocumentNode ?? throw new Exception("Root element is null");
-            var items = ScrapePage(rootNode, mainElementXPath, delegateAction);
+            IEnumerable<T> items;
+            try
+            {
+                var htmlDocument = await LoadHtmlDocument(browser, currentPage, isJs);
+                var rootNode = htmlDocument.DocumentNode ?? throw new Exception("Root element is null");
+                items = ScrapePage(rootNode, mainElementXPath, delegateAction);
+                currentPage = GetNextPageUrl(rootNode, baseUrl, nextPageXPath, cultureInfo);
+            }
+            catch
+            {
+                break;
+            }
 
             yield return items;
-
-            currentPage = GetNextPageUrl(rootNode, baseUrl, nextPageXPath, cultureInfo);
+            
         } while (currentPage != baseUrl);
     }
 
