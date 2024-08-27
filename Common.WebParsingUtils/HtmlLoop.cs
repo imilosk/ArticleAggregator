@@ -55,7 +55,7 @@ public class HtmlLoop
         await page.GoToAsync(url.ToString(), 120000);
 
         // TODO: Figure out something better
-        await Task.Delay(1000);
+        await Task.Delay(10000);
 
         var htmlContent = await page.GetContentAsync();
         var htmlDocument = new HtmlDocument();
