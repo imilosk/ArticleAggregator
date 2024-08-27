@@ -38,7 +38,7 @@ jobs:
         path: /tmp
         if_no_artifact_found: ignore
         workflow_search: true
-        github_token: ${{secrets.PERSONAL_TOKEN}}
+        github_token: ${{secrets.GITHUB_TOKEN}}
     - name: Migrate database
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
