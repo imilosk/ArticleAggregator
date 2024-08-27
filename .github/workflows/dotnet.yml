@@ -28,6 +28,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
     - name: Download SQLite DB Artifact
       uses: dawidd6/action-download-artifact@v6
       id: download-artifact
