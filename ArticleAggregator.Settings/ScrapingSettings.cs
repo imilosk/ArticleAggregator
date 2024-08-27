@@ -18,4 +18,5 @@ public class XPathConfig
     [Required] public string PublishDateXPath { get; init; } = string.Empty;
     [Required] public string UpdateDateXPath { get; init; } = string.Empty;
     [Required] public string NextPageXPath { get; init; } = string.Empty;
+    [Required] public bool IsJs { get; init; }
 }

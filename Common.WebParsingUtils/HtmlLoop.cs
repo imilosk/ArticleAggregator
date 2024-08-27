@@ -13,11 +13,11 @@ public class HtmlLoop
         string mainElementXPath,
         string nextPageXPath,
         CultureInfo cultureInfo,
+        bool isJs,
         Func<XPathNavigator, T> delegateAction
     )
     {
         var currentPage = baseUrl;
-
         do
         {
             var htmlDocument = _htmlWeb.Load(currentPage);
@@ -39,8 +39,11 @@ public class HtmlLoop
         return UriConverter.ConvertToAbsoluteUrl(baseUrl, nextPageUrl);
     }
 
-    private static IEnumerable<T> ScrapePage<T>(HtmlNode root, string mainElementXPath,
-        Func<XPathNavigator, T> delegateAction)
+    private static IEnumerable<T> ScrapePage<T>(
+        HtmlNode root,
+        string mainElementXPath,
+        Func<XPathNavigator, T> delegateAction
+    )
     {
         var nodes = root.SelectNodes(mainElementXPath);
 

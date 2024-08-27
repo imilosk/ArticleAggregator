@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ArticleAggregator.Core.Parsers.Implementations;
 
-public partial class XPathFeedParser : IXPathFeedParser
+public class XPathFeedParser : IXPathFeedParser
 {
     private readonly ILogger<XPathFeedParser> _logger;
     private readonly HtmlLoop _htmlLoop;
@@ -29,6 +29,7 @@ public partial class XPathFeedParser : IXPathFeedParser
             config.ArticleXPath,
             config.NextPageXPath,
             DefaultCultureInfo,
+            config.IsJs,
             navigator => ParseArticle(navigator, config)
         );
 
