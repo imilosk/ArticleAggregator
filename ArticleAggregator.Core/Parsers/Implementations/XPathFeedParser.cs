@@ -19,7 +19,7 @@ public class XPathFeedParser : IXPathFeedParser
     public XPathFeedParser(ILogger<XPathFeedParser> logger)
     {
         _logger = logger;
-        _htmlLoop = new HtmlLoop();
+        _htmlLoop = new HtmlLoop(logger);
     }
 
     public IAsyncEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config)

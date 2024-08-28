@@ -1,14 +1,21 @@
 ﻿using System.Globalization;
 using System.Xml.XPath;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Logging;
 using PuppeteerSharp;
 
 namespace Common.WebParsingUtils;
 
 public class HtmlLoop
 {
+    private readonly ILogger _logger;
     private readonly HtmlWeb _htmlWeb = new();
     private IBrowser? _browser;
+
+    public HtmlLoop(ILogger logger)
+    {
+        _logger = logger;
+    }
 
     public async IAsyncEnumerable<IEnumerable<T>> Parse<T>(
         Uri baseUrl,
@@ -29,6 +36,8 @@ public class HtmlLoop
             var items = ScrapePage(rootNode, mainElementXPath, delegateAction);
 
             yield return items;
+
+            _logger.LogInformation("Scraped page: {page}", currentPage.ToString());
 
             currentPage = GetNextPageUrl(rootNode, baseUrl, nextPageXPath, cultureInfo);
         } while (currentPage != baseUrl);
