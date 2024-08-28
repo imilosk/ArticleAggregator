@@ -49,7 +49,17 @@ public class HtmlLoop
 
         return _browser ??= await Puppeteer.LaunchAsync(new LaunchOptions
         {
-            Headless = true
+            Headless = true,
+            Args =
+            [
+                "--proxy=45.230.39.154:999" +
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-infobars",
+                "--disable-extensions",
+                "--disable-web-security",
+                "--ignore-certificate-errors"
+            ]
         });
     }
 
