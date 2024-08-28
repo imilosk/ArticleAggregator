@@ -50,6 +50,10 @@ jobs:
       with:
         name: article-aggregator-db
         path: /tmp/article_aggregator.db
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: /tmp/article_aggregator.db
     - name: Generate HTML
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.BlogGenerator
