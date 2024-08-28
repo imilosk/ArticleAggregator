@@ -12,6 +12,9 @@ public class HtmlLoop
     private readonly HtmlWeb _htmlWeb = new();
     private IBrowser? _browser;
 
+    private const string UserAgentDesktop =
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36";
+
     public HtmlLoop(ILogger logger)
     {
         _logger = logger;
@@ -61,10 +64,7 @@ public class HtmlLoop
         }
 
         var page = await browser.NewPageAsync();
-        
-        const string userAgentDesktop = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36";
-        
-        await page.SetUserAgentAsync(userAgentDesktop);
+        await page.SetUserAgentAsync(UserAgentDesktop);
         await page.GoToAsync(url.ToString());
 
         // TODO: Figure out something better
