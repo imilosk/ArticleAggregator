@@ -30,27 +30,19 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Download SQLite DB Artifact
-      uses: dawidd6/action-download-artifact@v6
-      id: download-artifact
+    - name: Download SQLite DB Release
+      uses: dsaltares/fetch-gh-release-asset@master
       with:
-        name: article-aggregator-db
-        path: /tmp
-        if_no_artifact_found: ignore
-        workflow_search: true
-        github_token: ${{secrets.GITHUB_TOKEN}}
+        version: 'tags/v0.1'
+        file: 'article_aggregator.db'
+        target: /tmp
     - name: Migrate database
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
     - name: Scrape blogs
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest 
-    - name: Upload SQLite DB Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: article-aggregator-db
-        path: /tmp/article_aggregator.db
-    - name: Release
+    - name: Release SQLite DB
       uses: softprops/action-gh-release@v2
       with:
         tag_name: v0.1
