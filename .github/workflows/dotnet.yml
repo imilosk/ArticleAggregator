@@ -33,9 +33,9 @@ jobs:
     - name: Download SQLite DB Release
       uses: dsaltares/fetch-gh-release-asset@master
       with:
-        version: 'tags/v0.1'
-        file: 'article_aggregator.db'
-        target: '/tmp/article_aggregator.db'
+        version: tags/v0.1
+        file: article_aggregator.db
+        target: /tmp/article_aggregator.db
     - name: Migrate database
       run: |
         dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
