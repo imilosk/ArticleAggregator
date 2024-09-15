@@ -22,16 +22,15 @@ public class HtmlLoop
         string mainElementXPath,
         string nextPageXPath,
         CultureInfo cultureInfo,
-        bool isJs,
+        bool useJs,
         Func<XPathNavigator, T> delegateAction
     )
     {
-        await using var browser = await InitiateBrowser();
         var currentPage = baseUrl;
 
         do
         {
-            var htmlDocument = await LoadHtmlDocument(browser, currentPage, isJs);
+            var htmlDocument = await LoadHtmlDocument(currentPage, useJs);
             var rootNode = htmlDocument.DocumentNode ?? throw new Exception("Root element is null");
             var items = ScrapePage(rootNode, mainElementXPath, delegateAction);
 
@@ -43,11 +42,16 @@ public class HtmlLoop
         } while (currentPage != baseUrl);
     }
 
-    private async Task<IBrowser> InitiateBrowser()
+    private async Task<IBrowser> GetOrInitiateBrowser()
     {
+        if (_browser is not null)
+        {
+            return _browser;
+        }
+
         await new BrowserFetcher().DownloadAsync();
 
-        return _browser ??= await Puppeteer.LaunchAsync(new LaunchOptions
+        _browser = await Puppeteer.LaunchAsync(new LaunchOptions
         {
             Headless = true,
             Args =
@@ -61,14 +65,18 @@ public class HtmlLoop
                 "--ignore-certificate-errors"
             ]
         });
+
+        return _browser;
     }
 
-    private async Task<HtmlDocument> LoadHtmlDocument(IBrowser browser, Uri url, bool isJs)
+    private async Task<HtmlDocument> LoadHtmlDocument(Uri url, bool useJs)
     {
-        if (!isJs)
+        if (!useJs)
         {
             return _htmlWeb.Load(url);
         }
+
+        await using var browser = await GetOrInitiateBrowser();
 
         var page = await browser.NewPageAsync();
         await page.GoToAsync(url.ToString());
