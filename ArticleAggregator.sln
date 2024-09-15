@@ -17,17 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.DataInges
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Core", "ArticleAggregator.Core\ArticleAggregator.Core.csproj", "{8471AAA0-4254-4288-A9C3-A8614C44B932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data.SqlClient", "Common.Data.SqlClient\Common.Data.SqlClient.csproj", "{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Schema", "ArticleAggregator.Schema\ArticleAggregator.Schema.csproj", "{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.Constants", "ArticleAggregator.Constants\ArticleAggregator.Constants.csproj", "{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data.Dapper.Utils", "Common.Data.Dapper.Utils\Common.Data.Dapper.Utils.csproj", "{DE70D959-510B-4403-A3C7-D009F8587038}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleAggregator.BlogGenerator", "ArticleAggregator.BlogGenerator\ArticleAggregator.BlogGenerator.csproj", "{A34B4566-68B2-4D0A-80A6-6890510A61D6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data.SqlKata.Utils", "Common.Data.SqlKata.Utils\Common.Data.SqlKata.Utils.csproj", "{BFC32540-BBB0-482C-BDDE-93C72129AEAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +53,6 @@ Global
 		{8471AAA0-4254-4288-A9C3-A8614C44B932}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8471AAA0-4254-4288-A9C3-A8614C44B932}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8471AAA0-4254-4288-A9C3-A8614C44B932}.Release|Any CPU.Build.0 = Release|Any CPU
-		{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{749CBDDA-02E4-4A2A-9FA1-439E7A742BA1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FF157B5-1A50-436E-9A2E-C4C20C0BF9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -71,17 +61,9 @@ Global
 		{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B77CC85-5589-4087-9AA6-7F3BA808E8C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE70D959-510B-4403-A3C7-D009F8587038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE70D959-510B-4403-A3C7-D009F8587038}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE70D959-510B-4403-A3C7-D009F8587038}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE70D959-510B-4403-A3C7-D009F8587038}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A34B4566-68B2-4D0A-80A6-6890510A61D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFC32540-BBB0-482C-BDDE-93C72129AEAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFC32540-BBB0-482C-BDDE-93C72129AEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFC32540-BBB0-482C-BDDE-93C72129AEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFC32540-BBB0-482C-BDDE-93C72129AEAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

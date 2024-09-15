@@ -12,13 +12,13 @@
         <ProjectReference Include="..\ArticleAggregator.Constants\ArticleAggregator.Constants.csproj"/>
         <ProjectReference Include="..\ArticleAggregator.Schema\ArticleAggregator.Schema.csproj"/>
         <ProjectReference Include="..\ArticleAggregator.Settings\ArticleAggregator.Settings.csproj"/>
-        <ProjectReference Include="..\Common.Data.Dapper.Utils\Common.Data.Dapper.Utils.csproj"/>
-        <ProjectReference Include="..\Common.Data.SqlClient\Common.Data.SqlClient.csproj"/>
-        <ProjectReference Include="..\Common.Data.SqlKata.Utils\Common.Data.SqlKata.Utils.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Common.BaseTypeExtensions" Version="1.0.0" />
+        <PackageReference Include="Common.Data.Dapper.Utils" Version="1.0.0" />
+        <PackageReference Include="Common.Data.SqlClient" Version="1.0.0" />
+        <PackageReference Include="Common.Data.SqlKata.Utils" Version="1.0.0" />
         <PackageReference Include="Common.WebParsingUtils" Version="1.0.0" />
         <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6"/>
         <PackageReference Include="SqlKata" Version="2.4.0"/>

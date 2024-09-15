@@ -7,8 +7,4 @@
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Common.Data.SqlKata.Utils\Common.Data.SqlKata.Utils.csproj"/>
-    </ItemGroup>
-
 </Project>

@@ -17,6 +17,7 @@
 
     <ItemGroup>
         <PackageReference Include="Common.BaseTypeExtensions" Version="1.0.0" />
+        <PackageReference Include="Common.Data.SqlClient" Version="1.0.0" />
         <PackageReference Include="FluentMigrator" Version="5.2.0"/>
         <PackageReference Include="FluentMigrator.Runner" Version="5.2.0"/>
         <PackageReference Include="FluentMigrator.Runner.SQLite" Version="5.2.0"/>
@@ -26,7 +27,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\ArticleAggregator.Schema\ArticleAggregator.Schema.csproj"/>
-        <ProjectReference Include="..\Common.Data.SqlClient\Common.Data.SqlClient.csproj"/>
         <ProjectReference Include="..\ArticleAggregator.Settings\ArticleAggregator.Settings.csproj"/>
     </ItemGroup>
 
