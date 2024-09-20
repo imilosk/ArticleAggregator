@@ -34,27 +34,21 @@ public class DataIngestService : IDataIngestService
 
     public async Task Ingest()
     {
-        foreach (var config in _rssFeedSettings.FeedConfigs)
-        {
-            _logger.LogInformation($"Scraping {config.BaseUrl}");
-            
-            var articles = _rssFeedParser.Parse(config.BaseUrl, config.FallbackAuthor);
+        await ScrapeRssFeeds();
+        await ScrapeHtmlFeeds();
+    }
 
-            if (await InsertDataIntoDb(articles))
-            {
-                break;
-            }
-        }
-
+    private async Task ScrapeHtmlFeeds()
+    {
         foreach (var config in _scrapingSettings.XPathConfigs)
         {
-            _logger.LogInformation($"Scraping {config.BaseUrl}");
-            
+            _logger.LogInformation("Scraping {baseUrl}", config.BaseUrl);
+
             var pages = _xPathFeedParser.ParseFromWeb(config);
 
             await foreach (var articles in pages)
             {
-                if (await InsertDataIntoDb(articles))
+                if (await UpsertDataIntoDb(articles))
                 {
                     break;
                 }
@@ -62,7 +56,22 @@ public class DataIngestService : IDataIngestService
         }
     }
 
-    private async Task<bool> InsertDataIntoDb(IEnumerable<Article> items)
+    private async Task ScrapeRssFeeds()
+    {
+        foreach (var config in _rssFeedSettings.FeedConfigs)
+        {
+            _logger.LogInformation("Scraping {baseUrl}", config.BaseUrl);
+
+            var articles = _rssFeedParser.Parse(config.BaseUrl, config.FallbackAuthor);
+
+            if (await UpsertDataIntoDb(articles))
+            {
+                break;
+            }
+        }
+    }
+
+    private async Task<bool> UpsertDataIntoDb(IEnumerable<Article> items)
     {
         var (_, updated) = await _articleRepository.UpsertMany(items);
 
@@ -72,6 +81,7 @@ public class DataIngestService : IDataIngestService
         }
 
         _logger.LogInformation("Found existing data. Stopping scraping ...");
+
         return true;
     }
 }
