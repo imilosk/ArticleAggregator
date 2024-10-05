@@ -30,7 +30,7 @@ jobs:
     - name: Build
       run: dotnet build -c Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal
     - name: Download SQLite DB Release
       uses: dsaltares/fetch-gh-release-asset@master
       with:
