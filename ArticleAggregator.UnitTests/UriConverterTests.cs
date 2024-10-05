@@ -1,4 +1,4 @@
-using Common.WebParsingUtils;
+using IMilosk.WebParsingUtils;
 
 namespace ArticleAggregator.UnitTests;
 
@@ -9,7 +9,7 @@ public class UriConverterTests
     [InlineData("https://milos.com/", "", "https://milos.com/")]
     public void CompleteUri_LocalDiskParse_ReturnsValueTuple(string baseUri, string path, string expected)
     {
-        var result = UriConverter.ConvertToAbsoluteUrl(new Uri(baseUri), path);
+        var result = UriConverter.ToAbsoluteUrl(new Uri(baseUri), path);
 
         Assert.Equal(new Uri(expected), result);
     }

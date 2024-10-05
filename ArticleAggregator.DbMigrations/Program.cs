@@ -1,7 +1,9 @@
 ﻿using ArticleAggregator.DbMigrations.Migrations;
-using Common.BaseTypeExtensions;
-using Common.Data.SqlClient;
 using FluentMigrator.Runner;
+using IMilosk.Data.SqlClient.DatabaseConnector.Implementations;
+using IMilosk.Data.SqlClient.DatabaseConnector.Interfaces;
+using IMilosk.Data.SqlClient.DatabaseConnector.Settings;
+using IMilosk.Extensions.BaseTypeExtensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

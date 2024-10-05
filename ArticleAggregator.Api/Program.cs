@@ -1,6 +1,6 @@
 using ArticleAggregator.Core.Extensions;
 using ArticleAggregator.Core.Repositories.Interfaces;
-using Common.Data.SqlKata.Utils.Filtering;
+using IMilosk.Data.SqlKata.Utils.Filtering;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 

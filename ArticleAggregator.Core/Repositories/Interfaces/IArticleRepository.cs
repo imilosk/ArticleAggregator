@@ -1,5 +1,5 @@
 using ArticleAggregator.Core.DataModels;
-using Common.Data.SqlKata.Utils.Repositories;
+using IMilosk.Data.SqlKata.Utils.Repositories;
 
 namespace ArticleAggregator.Core.Repositories.Interfaces;
 

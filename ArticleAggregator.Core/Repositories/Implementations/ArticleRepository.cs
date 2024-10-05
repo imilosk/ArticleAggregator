@@ -1,9 +1,9 @@
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Repositories.Interfaces;
 using ArticleAggregator.Schema;
-using Common.Data.SqlClient;
-using Common.Data.SqlKata.Utils.Filtering;
-using Common.Data.SqlKata.Utils.Repositories;
+using IMilosk.Data.SqlClient.DatabaseConnector.Interfaces;
+using IMilosk.Data.SqlKata.Utils.Filtering;
+using IMilosk.Data.SqlKata.Utils.Repositories;
 using SqlKata.Execution;
 
 namespace ArticleAggregator.Core.Repositories.Implementations;

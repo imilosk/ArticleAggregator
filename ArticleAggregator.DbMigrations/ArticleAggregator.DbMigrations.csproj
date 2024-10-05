@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Common.BaseTypeExtensions" Version="1.0.0" />
-        <PackageReference Include="Common.Data.SqlClient" Version="1.0.0" />
+        <PackageReference Include="IMilosk.Extensions.BaseTypeExtensions" Version="0.1.1"/>
+        <PackageReference Include="IMilosk.Data.SqlClient.DatabaseConnector" Version="0.1.0"/>
         <PackageReference Include="FluentMigrator" Version="5.2.0"/>
         <PackageReference Include="FluentMigrator.Runner" Version="5.2.0"/>
         <PackageReference Include="FluentMigrator.Runner.SQLite" Version="5.2.0"/>

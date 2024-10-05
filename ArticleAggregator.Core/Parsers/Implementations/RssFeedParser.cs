@@ -4,8 +4,8 @@ using ArticleAggregator.Constants;
 using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Extensions;
 using ArticleAggregator.Core.Parsers.Interfaces;
-using Common.BaseTypeExtensions;
-using Common.WebParsingUtils;
+using IMilosk.Extensions.BaseTypeExtensions;
+using IMilosk.WebParsingUtils;
 using Microsoft.Extensions.Logging;
 
 namespace ArticleAggregator.Core.Parsers.Implementations;

@@ -5,7 +5,7 @@ using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Extensions;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
-using Common.WebParsingUtils;
+using IMilosk.WebParsingUtils;
 using Microsoft.Extensions.Logging;
 
 namespace ArticleAggregator.Core.Parsers.Implementations;
@@ -26,6 +26,7 @@ public class XPathFeedParser : IXPathFeedParser
     {
         var pages = _htmlLoop.Parse(
             config.BaseUrl,
+            config.Navigation,
             config.ArticleXPath,
             config.NextPageXPath,
             DefaultCultureInfo,
@@ -49,7 +50,7 @@ public class XPathFeedParser : IXPathFeedParser
                     string.Empty)
                 .HtmlDecode().Trim(),
             Author = navigator.GetValueOrDefault(config.AuthorXPath, string.Empty, DefaultCultureInfo),
-            Link = UriConverter.ConvertToAbsoluteUrl(
+            Link = UriConverter.ToAbsoluteUrl(
                 config.BaseUrl,
                 navigator.GetValueOrDefault(config.LinkXPath, string.Empty, DefaultCultureInfo)
             ),
