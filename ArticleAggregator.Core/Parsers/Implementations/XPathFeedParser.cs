@@ -5,6 +5,7 @@ using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Extensions;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
+using IMilosk.Extensions.BaseTypeExtensions;
 using IMilosk.WebParsingUtils;
 using Microsoft.Extensions.Logging;
 
@@ -22,23 +23,35 @@ public class XPathFeedParser : IXPathFeedParser
         _htmlLoop = new HtmlLoop(logger);
     }
 
-    public IAsyncEnumerable<IEnumerable<Article>> ParseFromWeb(XPathConfig config)
+    public IAsyncEnumerable<Article> ParseFromWeb(XPathConfig config)
     {
         var pages = _htmlLoop.Parse(
             config.BaseUrl,
-            config.Navigation,
-            config.ArticleXPath,
-            config.NextPageXPath,
+            config.Navigation.ToArray(),
             DefaultCultureInfo,
             config.IsJs,
-            navigator => ParseArticle(navigator, config)
+            (navigator, uri) => ParseArticle(navigator, uri, config)
         );
 
         return pages;
     }
 
-    private Article ParseArticle(XPathNavigator navigator, XPathConfig config)
+    private Article ParseArticle(XPathNavigator navigator, Uri uri, XPathConfig config)
     {
+        Uri link;
+
+        if (config.LinkXPath.IsNullOrEmpty())
+        {
+            link = uri;
+        }
+        else
+        {
+            link = UriConverter.ToAbsoluteUrl(
+                config.BaseUrl,
+                navigator.GetValueOrDefault(config.LinkXPath, string.Empty, DefaultCultureInfo)
+            );
+        }
+
         var article = new Article
         {
             Title =
@@ -50,10 +63,7 @@ public class XPathFeedParser : IXPathFeedParser
                     string.Empty)
                 .HtmlDecode().Trim(),
             Author = navigator.GetValueOrDefault(config.AuthorXPath, string.Empty, DefaultCultureInfo),
-            Link = UriConverter.ToAbsoluteUrl(
-                config.BaseUrl,
-                navigator.GetValueOrDefault(config.LinkXPath, string.Empty, DefaultCultureInfo)
-            ),
+            Link = link,
             PublishDate =
                 navigator.GetValueOrDefault(config.PublishDateXPath, DateTime.MinValue, DefaultCultureInfo),
             LastUpdatedTime =

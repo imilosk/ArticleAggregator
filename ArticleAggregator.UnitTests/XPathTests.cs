@@ -2,6 +2,7 @@ using ArticleAggregator.Core.DataModels;
 using ArticleAggregator.Core.Parsers.Implementations;
 using ArticleAggregator.Core.Parsers.Interfaces;
 using ArticleAggregator.Settings;
+using IMilosk.WebParsingUtils;
 using Microsoft.Extensions.Logging;
 using Moq;
 
@@ -25,21 +26,27 @@ public class XPathTests
         var config = new XPathConfig
         {
             BaseUrl = new Uri("https://webdevbev.co.uk/blog.html"),
-            ArticleXPath = "//*[contains(@class, 'blog__post-preview')]",
+            Navigation =
+            [
+                new Navigation
+                {
+                    MainElementXPath = "//*[contains(@class, 'blog__post-preview')]",
+                }
+            ],
+
             TitleXPath = "descendant::h2//a/text()",
             SummaryXPath = "descendant::p[3]/text()",
             LinkXPath = "descendant::h2//a/@href",
             AuthorXPath = string.Empty,
             PublishDateXPath = string.Empty,
             UpdateDateXPath = string.Empty,
-            NextPageXPath = string.Empty,
         };
 
         var result = _xPathFeedParser.ParseFromWeb(config);
 
-        await foreach (var articles in result)
+        await foreach (var article in result)
         {
-            Assert.IsAssignableFrom<IEnumerable<Article>>(articles);
+            Assert.IsType<Article>(article);
         }
     }
 }

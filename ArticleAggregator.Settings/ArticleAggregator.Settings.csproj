@@ -25,4 +25,8 @@
         </None>
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="IMilosk.WebParsingUtils" Version="0.2.8"/>
+    </ItemGroup>
+
 </Project>

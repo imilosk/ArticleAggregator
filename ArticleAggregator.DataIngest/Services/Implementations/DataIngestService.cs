@@ -40,18 +40,38 @@ public class DataIngestService : IDataIngestService
 
     private async Task ScrapeHtmlFeeds()
     {
+        const int batchSize = 100;
+        var batch = new Article[batchSize];
+
         foreach (var config in _scrapingSettings.XPathConfigs)
         {
+            var index = 0;
             _logger.LogInformation("Scraping {baseUrl}", config.BaseUrl);
 
-            var pages = _xPathFeedParser.ParseFromWeb(config);
+            var articles = _xPathFeedParser.ParseFromWeb(config);
 
-            await foreach (var articles in pages)
+            await foreach (var article in articles)
             {
-                if (await UpsertDataIntoDb(articles))
+                batch[index] = article;
+                index++;
+                if (index < 100)
                 {
+                    continue;
+                }
+
+                index = 0;
+
+                if (await UpsertDataIntoDb(batch))
+                {
+                    _logger.LogInformation("Found existing data. Stopping scraping ...");
+
                     break;
                 }
+            }
+
+            if (index > 0)
+            {
+                await UpsertDataIntoDb(batch);
             }
         }
     }
@@ -64,10 +84,14 @@ public class DataIngestService : IDataIngestService
 
             var articles = _rssFeedParser.Parse(config.BaseUrl, config.FallbackAuthor);
 
-            if (await UpsertDataIntoDb(articles))
+            if (!await UpsertDataIntoDb(articles))
             {
-                break;
+                continue;
             }
+
+            _logger.LogInformation("Found existing data. Stopping scraping ...");
+
+            break;
         }
     }
 
@@ -75,13 +99,6 @@ public class DataIngestService : IDataIngestService
     {
         var (_, updated) = await _articleRepository.UpsertMany(items);
 
-        if (updated <= 0)
-        {
-            return false;
-        }
-
-        _logger.LogInformation("Found existing data. Stopping scraping ...");
-
-        return true;
+        return updated > 0;
     }
 }
