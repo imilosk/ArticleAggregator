@@ -71,7 +71,7 @@ public class DataIngestService : IDataIngestService
 
             if (index > 0)
             {
-                await UpsertDataIntoDb(batch);
+                await UpsertDataIntoDb(batch[..index]);
             }
         }
     }

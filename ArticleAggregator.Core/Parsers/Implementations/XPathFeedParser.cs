@@ -62,7 +62,7 @@ public class XPathFeedParser : IXPathFeedParser
                     navigator.GetValueOrDefault(config.SummaryXPath, string.Empty, DefaultCultureInfo),
                     string.Empty)
                 .HtmlDecode().Trim(),
-            Author = navigator.GetValueOrDefault(config.AuthorXPath, string.Empty, DefaultCultureInfo),
+            Author = navigator.GetValueOrDefault(config.AuthorXPath, string.Empty, DefaultCultureInfo).Trim(),
             Link = link,
             PublishDate =
                 navigator.GetValueOrDefault(config.PublishDateXPath, DateTime.MinValue, DefaultCultureInfo),
