@@ -12,7 +12,7 @@ var configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
 
-return await Bootstrapper
+await Bootstrapper
     .Factory
     .CreateDefault(args)
     .AddHostingCommands()
@@ -22,5 +22,6 @@ return await Bootstrapper
             .AddArticleAggregator(configuration)
             .AddScoped<LoadArticlesModule>();
     })
-    .AddPipeline<ArticlesPipeline>()
+    .AddPipeline<SitemapPipeline>(nameof(SitemapPipeline))
+    .AddPipeline<ArticlesPipeline>(nameof(ArticlesPipeline))
     .RunAsync();
