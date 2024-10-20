@@ -100,8 +100,16 @@
     --pagefind-ui-border-width: 1px
 }
 
-:root {
-    --pagefind-ui-font: inherit
+#cactus__search {
+    :root {
+        --pagefind-ui-font: inherit;
+    }
+
+    --pagefind-ui-primary: hsl(var(--theme-accent) / 1);
+    --pagefind-ui-text: hsl(var(--theme-text) / 1);
+    --pagefind-ui-background: hsl(var(--theme-bg) / 1);
+    --pagefind-ui-border: #a1a1aa;
+    --pagefind-ui-border-width: 1px;
 }
 
 #cactus__search .pagefind-ui__search-clear {

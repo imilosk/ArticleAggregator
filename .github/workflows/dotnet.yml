@@ -57,8 +57,13 @@ jobs:
         cd ArticleAggregator.BlogGenerator/input
         npm install
         npx tailwindcss -i ./css/styles.css -o ../output/css/styles.css --minify
+    - name: Build search index
+      run: |
+        cd ArticleAggregator.BlogGenerator
+        npx -y pagefind --site output
     - name: Copy assets
       run: |
+        cp -r ./ArticleAggregator.BlogGenerator/input/js/ ./ArticleAggregator.BlogGenerator/output
         cp -r ./ArticleAggregator.BlogGenerator/input/images/ ./ArticleAggregator.BlogGenerator/output
         cp ./ArticleAggregator.BlogGenerator/input/favicon.ico ./ArticleAggregator.BlogGenerator/output
     - name: Deploy
