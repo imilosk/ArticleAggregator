@@ -35,6 +35,15 @@
         <None Update="secrets.Production.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="package.json">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Update="package-lock.json">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
+        <None Update="tailwind.config.js">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

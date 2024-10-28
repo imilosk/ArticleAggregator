@@ -20,58 +20,65 @@ jobs:
       NuGetPackageSourceCredentials_GITHUB_IMILOSK: Username=OWNER;Password=${{ secrets.GITHUB_TOKEN }}
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
           dotnet-version: '8.x'
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build -c Release --no-restore
-    - name: Test
-      run: dotnet test --verbosity normal
-    - name: Download SQLite DB Release
-      uses: dsaltares/fetch-gh-release-asset@master
-      with:
-        version: tags/v0.1
-        file: article_aggregator.db
-        target: /tmp/article_aggregator.db
-    - name: Migrate database
-      run: |
-        dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
-    - name: Scrape blogs
-      run: |
-        dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest 
-    - name: Release SQLite DB
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: v0.1
-        make_latest: true
-        files: /tmp/article_aggregator.db
-    - name: Generate HTML
-      run: |
-        dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.BlogGenerator
-    - name: Build CSS
-      run: |
-        cd ArticleAggregator.BlogGenerator/input
-        npm install
-        npx tailwindcss -i ./css/styles.css -o ../output/css/styles.css --minify
-    - name: Build search index
-      run: |
-        cd ArticleAggregator.BlogGenerator
-        npx -y pagefind --site output
-    - name: Copy assets
-      run: |
-        cp -r ./ArticleAggregator.BlogGenerator/input/js/ ./ArticleAggregator.BlogGenerator/output
-        cp -r ./ArticleAggregator.BlogGenerator/input/images/ ./ArticleAggregator.BlogGenerator/output
-        cp ./ArticleAggregator.BlogGenerator/input/favicon.ico ./ArticleAggregator.BlogGenerator/output
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v4
-      if: github.ref == 'refs/heads/main'
-      with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        external_repository: imilosk/relatively-general-dotnet
-        publish_branch: main
-        publish_dir: ./ArticleAggregator.BlogGenerator/output
-        destination_dir: site/
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build .NET
+        run: dotnet build -c Release --no-restore
+      - name: Test .NET
+        run: dotnet test --verbosity normal
+      - name: Download SQLite DB Release
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          version: tags/v0.1
+          file: article_aggregator.db
+          target: /tmp/article_aggregator.db
+      - name: Migrate database
+        run: |
+          dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
+      - name: Scrape blogs
+        run: |
+          dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest 
+      - name: Release SQLite DB
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1
+          make_latest: true
+          files: /tmp/article_aggregator.db
+      - name: Build JavaScript
+        run: |
+          cd ArticleAggregator.BlogGenerator
+          npm install
+          npx mix --production
+      - name: Generate HTML
+        run: |
+          dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.BlogGenerator
+      - name: Build CSS
+        run: |
+          cd ArticleAggregator.BlogGenerator
+          npm install
+          npx tailwindcss -i ./input/css/styles.css -o ./output/css/styles.css --minify
+      - name: Build search index
+        run: |
+          cd ArticleAggregator.BlogGenerator
+          npx -y pagefind --site output
+      - name: Copy assets
+        run: |
+          mkdir -p "./ArticleAggregator.BlogGenerator/output/js"
+          mkdir -p "./ArticleAggregator.BlogGenerator/output/images"
+          cp -r ./ArticleAggregator.BlogGenerator/mix/js/ ./ArticleAggregator.BlogGenerator/output/js
+          cp -r ./ArticleAggregator.BlogGenerator/input/images/ ./ArticleAggregator.BlogGenerator/output/images
+          cp ./ArticleAggregator.BlogGenerator/input/favicon.ico ./ArticleAggregator.BlogGenerator/output
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: imilosk/relatively-general-dotnet
+          publish_branch: main
+          publish_dir: ./ArticleAggregator.BlogGenerator/output
+          destination_dir: site/
