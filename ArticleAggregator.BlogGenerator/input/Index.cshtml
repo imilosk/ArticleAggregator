@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <title>Home • Relatively General .NET</title>
+    <title>Page @Model.CurrentPage • Relatively General .NET</title>
     <link href="favicon.ico" rel="icon" sizes="any">
     <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
     <meta content="hsl()" name="theme-color">
@@ -111,21 +111,29 @@
         </button>
     </mobile-button>
 </header>
-<main id="main">
+<main id="main" data-pagefind-body>
     <section aria-label="Blog post list">
+        @{ int i = 0; }
         @foreach(var article in @Model.Articles) {
-        <a href="@article.Link" target="_blank"><h1 class="title mb-6">@article.Title</h1></a>
-        <p class="mb-2">by @article.Author</p>
-        <p class="mb-6 flex gap-1.5">
+        i++;
+        int articleNumber = (Model.CurrentPage - 1) * 10 + i;
+
+        <article id="article-@articleNumber">
+            <a href="@article.Link" target="_blank">
+                <h2 class="title mb-6" id="article-@articleNumber">@article.Title</h2>
+            </a>
+            <p class="mb-2">by @article.Author</p>
+            <p class="mb-6 flex gap-1.5">
                     <span>
-                                    <svg width="1.25rem" fill="currentColor" viewBox="0 0 24 24"
-                                         xmlns="http://www.w3.org/2000/svg"><path
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM12 6C12.5523 6 13 6.44772 13 7V11.5858L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V7C11 6.44772 11.4477 6 12 6Z"></path></svg>
+                        <svg width="1.25rem" fill="currentColor" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg"><path
+                                xmlns="http://www.w3.org/2000/svg"
+                                d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM12 6C12.5523 6 13 6.44772 13 7V11.5858L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12V7C11 6.44772 11.4477 6 12 6Z"></path></svg>
                     </span>
-            posted on: @article.PublishDate.ToString("MMMM dd, yyyy")
-        </p>
-        <p class="max-w-full w-full line-clamp-5 text-justify mb-20">@article.Summary</p>
+                posted on: @article.PublishDate.ToString("MMMM dd, yyyy")
+            </p>
+            <p class="max-w-full w-full line-clamp-5 text-justify mb-20">@article.Summary</p>
+        </article>
         }
         <div class="button flex justify-between">
             @if(Model.PreviousPageUri != string.Empty) {
@@ -149,7 +157,7 @@
             <ul class="flex flex-1 items-center gap-x-2 sm:flex-initial">
                 <li class="flex">
                     <p class="flex items-end gap-2 justify-center flex-wrap	">© Relatively General
-                        .NET @DateTime.Now.Year<span
+                        .NET @DateTime.UtcNow.Year<span
                             class="inline-block">&nbsp;🚀&nbsp;Theme: Astro Cactus</span>
 
                         <a class="inline-block sm:hover:text-link" href="https://github.com/chrismwilliams/astro-cactus"
@@ -174,7 +182,7 @@
             class="px-4 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline" href="/about/"> About </a>
     </nav>
 </footer>
-<script src="js/script.js"></script>
+<script src="js/script.js?id=0441ad4f65d54589aea5"></script>
 <script src="pagefind/pagefind-ui.js"></script>
 </body>
 </html>
