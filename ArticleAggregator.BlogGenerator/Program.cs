@@ -24,4 +24,5 @@ await Bootstrapper
     })
     .AddPipeline<SitemapPipeline>(nameof(SitemapPipeline))
     .AddPipeline<ArticlesPipeline>(nameof(ArticlesPipeline))
+    .AddPipeline<AboutPipeline>(nameof(AboutPipeline))
     .RunAsync();

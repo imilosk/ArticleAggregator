@@ -1,6 +1,7 @@
 using ArticleAggregator.BlogGenerator.ClassExtensions;
 using ArticleAggregator.BlogGenerator.Modules;
 using ArticleAggregator.BlogGenerator.ViewModels;
+
 using Statiq.Razor;
 
 namespace ArticleAggregator.BlogGenerator.Pipelines;
@@ -20,8 +21,10 @@ internal class ArticlesPipeline : Pipeline
         [
             new PaginateDocuments(ArticlesPerPage),
             new ArticlePaginationModule(),
+            new MergeContent(
+                new ReadFiles("Index.cshtml")
+            ),
             new RenderRazor()
-                .WithLayout(new NormalizedPath("Index.cshtml"))
                 .WithModel(Config.FromDocument((document, _) => document.GetObject<ArticlesViewModel>())),
             new SetDestination(Config.FromDocument((document, _) =>
             {

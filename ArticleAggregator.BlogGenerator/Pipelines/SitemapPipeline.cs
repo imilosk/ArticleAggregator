@@ -7,13 +7,22 @@ internal class SitemapPipeline : Pipeline
     public SitemapPipeline()
     {
         Dependencies.Add(nameof(ArticlesPipeline));
+        Dependencies.Add(nameof(AboutPipeline));
 
         PostProcessModules =
         [
-            new ExecuteConfig(Config.FromContext(ctx => ctx.Outputs.FromPipeline(nameof(ArticlesPipeline)))),
-            new SetMetadata("SitemapItem",
+            new ExecuteConfig(
+                Config.FromContext(ctx =>
+                    ctx.Outputs.FromPipeline(nameof(ArticlesPipeline))
+                        .Concat(ctx.Outputs.FromPipeline(nameof(AboutPipeline)))
+                )
+            ),
+            new SetMetadata(
+                "SitemapItem",
                 Config.FromDocument(doc =>
-                    new SitemapItem(BaseUrl + "/" + doc.Destination))),
+                    new SitemapItem(BaseUrl + "/" + doc.Destination)
+                )
+            ),
             new GenerateSitemap(),
         ];
 
