@@ -68,8 +68,8 @@ jobs:
           npx -y pagefind --site output
       - name: Copy assets
         run: |
-          cp -r ./ArticleAggregator.BlogGenerator/mix/js/ ./ArticleAggregator.BlogGenerator/output/
-          cp -r ./ArticleAggregator.BlogGenerator/input/images/ ./ArticleAggregator.BlogGenerator/output/
+          cp -r ./ArticleAggregator.BlogGenerator/mix/js/ ./ArticleAggregator.BlogGenerator/output/js
+          cp -r ./ArticleAggregator.BlogGenerator/input/images/ ./ArticleAggregator.BlogGenerator/output/images
           cp ./ArticleAggregator.BlogGenerator/input/favicon.ico ./ArticleAggregator.BlogGenerator/output
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
