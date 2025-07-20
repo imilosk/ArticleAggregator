@@ -39,10 +39,10 @@ jobs:
           target: /tmp/article_aggregator.db
       - name: Migrate database
         run: |
-          dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
+          dotnet run --project ArticleAggregator.DbMigrations
       - name: Scrape blogs
         run: |
-          dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest 
+          dotnet run --project ArticleAggregator.DataIngest 
       - name: Release SQLite DB
         uses: softprops/action-gh-release@v2
         with:
@@ -56,7 +56,7 @@ jobs:
           npx mix --production
       - name: Generate HTML
         run: |
-          dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.BlogGenerator
+          dotnet run --project ArticleAggregator.BlogGenerator
       - name: Build CSS
         run: |
           cd ArticleAggregator.BlogGenerator
