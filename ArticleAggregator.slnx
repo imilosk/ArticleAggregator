@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Project Path="ArticleAggregator.Api/ArticleAggregator.Api.csproj" />
+  <Project Path="ArticleAggregator.BlogGenerator/ArticleAggregator.BlogGenerator.csproj" />
+  <Project Path="ArticleAggregator.Constants/ArticleAggregator.Constants.csproj" />
+  <Project Path="ArticleAggregator.Core/ArticleAggregator.Core.csproj" />
+  <Project Path="ArticleAggregator.DataIngest/ArticleAggregator.DataIngest.csproj" />
+  <Project Path="ArticleAggregator.DbMigrations/ArticleAggregator.DbMigrations.csproj" />
+  <Project Path="ArticleAggregator.Schema/ArticleAggregator.Schema.csproj" />
+  <Project Path="ArticleAggregator.Settings/ArticleAggregator.Settings.csproj" />
+  <Project Path="ArticleAggregator.UnitTests/ArticleAggregator.UnitTests.csproj" />
+</Solution>

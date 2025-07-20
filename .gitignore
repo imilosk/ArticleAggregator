@@ -13,3 +13,4 @@ wwwroot/
 node_modules/
 mix/
 secrets.*.json
+.vscode/

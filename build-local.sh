@@ -90,7 +90,7 @@ warning() {
     echo -e "${YELLOW}[WARNING]${NC} $1"
 }
 
-if [[ ! -f "ArticleAggregator.sln" ]]; then
+if [[ ! -f "ArticleAggregator.slnx" ]]; then
     error "This script must be run from the root project directory (where ArticleAggregator.sln is located)"
     exit 1
 fi
