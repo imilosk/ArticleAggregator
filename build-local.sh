@@ -136,13 +136,13 @@ test_dotnet() {
 
 migrate_database() {
     log "Running database migrations..."
-    dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DbMigrations
+    dotnet run --project ArticleAggregator.DbMigrations
     success "Database migrations completed"
 }
 
 scrape_blogs() {
     log "Scraping blogs..."
-    dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.DataIngest
+    dotnet run --project ArticleAggregator.DataIngest
     success "Blog scraping completed"
 }
 
@@ -157,7 +157,7 @@ build_javascript() {
 
 generate_html() {
     log "Generating HTML..."
-    dotnet run --environment $DOTNET_ENVIRONMENT --project ArticleAggregator.BlogGenerator
+    dotnet run --project ArticleAggregator.BlogGenerator
     success "HTML generated"
 }
 
