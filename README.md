@@ -1,6 +1,6 @@
 # Tech Article Aggregator
 
-A .NET 8 solution for aggregating technical articles from various sources and generating a static blog website.
+A 9 solution for aggregating technical articles from various sources and generating a static blog website.
 
 ## Overview
 
@@ -32,7 +32,7 @@ The solution consists of several modular components:
 
 ## Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Docker](https://www.docker.com/get-started) (for containerized deployment)
 - SQLite (included with .NET, no separate installation required)
 
