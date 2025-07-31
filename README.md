@@ -1,6 +1,6 @@
 # Tech Article Aggregator
 
-A 9 solution for aggregating technical articles from various sources and generating a static blog website.
+A solution for aggregating technical articles from various sources and generating a static blog website.
 
 ## Overview
 
